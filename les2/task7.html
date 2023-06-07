@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 7</title>
+    <script>
+        //1. Вводимо необхідні данні
+        let monthRandomMin = 1;
+        let monthRandomMax = 12;
+        let dayRandomMin = 0;
+        let dayRandomMax = 6;
+        let monthRandom = monthRandomMin + Math.floor(Math.random() * (monthRandomMax - monthRandomMin +1));
+        let dayRandom = dayRandomMin + Math.floor(Math.random() * (dayRandomMax - dayRandomMin +1));
+        //2. Робимо обчислення
+        let dayAndMonthRandomSum = monthRandom + dayRandom;
+        //3. Виводимо результат
+        document.write(`<span style="font-size: 30px;">Рандомний місяць: ${monthRandom}<br>
+            Рандомний день: ${dayRandom}<br>
+                Їхня сума: ${dayAndMonthRandomSum}</span>`);
+    </script>
+</head>
+<body>
+    <p><a href="./lesson2.html">Назад</a></p>
+</body>
+</html>

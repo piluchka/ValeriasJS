@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+    <script>
+        //1. Вводимо необхідні данні
+        let productAmount = parseInt(prompt('Введіть кількість одиниць товару', ''));
+        let productPrice = parseFloat(prompt('Введіть вартість одного товару', ''));
+        
+        //2. Робимо обчислення
+        let productTotalAmount = (productAmount * productPrice).toFixed(2);
+        let productTax = (0.05 * productTotalAmount).toFixed(2);
+
+        //3. Виводимо результат
+        document.write(`    <span style="font-size: 30px;">Загальна вартість всього товару: ${productTotalAmount} грн<br>
+        Нараховано ПДВ: ${productTax} грн</span>`);
+    </script>
+</head>
+<body>
+    <p><a href="./lesson2.html">Назад</a></p>
+</body>
+</html>

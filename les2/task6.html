@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+    <script>
+        //1. Вводимо необхідні данні
+        let prodOneAmount = parseInt(prompt('Введіть кількість першого товару', ''));
+        let prodOnePrice = parseInt(prompt('Введіть ціну першого товару', ''));
+        let prodTwoAmount = parseInt(prompt('Введіть кількість другого товару', ''));
+        let prodTwoPrice = parseInt(prompt('Введіть ціну другого товару', ''));
+        let prodThreeAmount = parseInt(prompt('Введіть кількість третього товару', ''));
+        let prodThreePrice = parseInt(prompt('Введіть ціну третього товару', ''));
+        //2. Робимо обчислення
+        let prodOneTotalPrice = prodOneAmount * prodOnePrice;
+        let prodTwoTotalPrice = prodTwoAmount * prodTwoPrice;
+        let prodThreeTotalPrice = prodThreeAmount * prodThreePrice;
+        let prodAllTotalPrice = prodOneTotalPrice + prodTwoTotalPrice + prodThreeTotalPrice;
+        //3. Виводимо результат
+        document.write(`    <div style="width: 400px; height: 500px; border: solid 1px black;">
+    <p>
+        Перший продукт.<br> Кількість: ${prodOneAmount} <br> ціна: ${prodOnePrice}грн.<br> Всього: ${prodOneTotalPrice}грн
+    </p>
+    <p>
+        Другий продукт. <br>Кількість: ${prodTwoAmount} <br> ціна: ${prodTwoPrice}грн.<br> Всього: ${prodTwoTotalPrice}грн
+    </p>
+    <p>
+        Третій продукт. <br>Кількість: ${prodThreeAmount}<br> ціна: ${prodThreePrice}грн.<br> Всього: ${prodThreeTotalPrice}грн
+    </p> 
+    <p>
+        Загальна вартість товару: ${prodAllTotalPrice}грн.
+    </p>
+</div>`);
+    </script>
+</head>
+<body>
+    <p><a href="./lesson2.html">Назад</a></p>
+</body>
+</html>

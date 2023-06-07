@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 0</title>
+    <link rel="stylesheet" href="./task0.css">
+    <script>
+        let a = parseFloat(prompt('Введіть перше число', ''));
+        let b = parseFloat(prompt('Введіть друге число', ''));
+        let c = parseFloat(prompt('Введіть третє число', ''));
+        let s1 = a + b + 12;
+        let s2 = Math.sqrt((a+b)/2*a).toFixed(2);
+        let s3 = Math.cbrt(a*c + b*c).toFixed(2);
+        let s4 = Math.sin(a/(-b)).toFixed(2);
+        document.write(`<span style="font-size: 40px;
+        display: flex; flex-direction: column; align-items: center;5">S1 = ${s1}<br> 
+        S2 = ${s2}<br>
+        S3 = ${s3}<br>
+        S4 = ${s4}<br></span>`);
+        
+    </script>
+</head>
+<body>
+    <p><a href="./lesson2.html">Назад</a></p>
+</body>
+</html>

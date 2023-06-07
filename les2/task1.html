@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taks 1</title>
+    <script>
+        //1. Введення необхідних данних
+        let numOne = parseFloat(prompt('Введіть перше число', ''));
+        let numTwo = parseFloat(prompt('Введіть друге число', ''));
+
+        //2. Обчислення результатів
+        let sum = numOne + numTwo;
+        let multi = (numOne * numTwo).toFixed(2);
+        let divis = (numOne / numTwo).toFixed(2);
+
+        //3. Вивід результату в таблицю
+        document.write(`
+            <table>
+        <tbody>
+          <tr>
+            <th>Функція</th>
+            <th>Результат</th>
+          </tr>
+          <tr>
+            <td>Сума</td>
+            <td>${sum}</td>
+          </tr>
+          <tr>
+            <td>Добуток</td>
+            <td>${multi}</td>
+          </tr>
+          <tr>
+            <td>Частка</td>
+            <td>${divis}</td>
+          </tr>
+        </tbody>
+      </table>`
+        );
+    </script>
+</head>
+<body>
+    <p><a href="./lesson2.html">Назад</a></p>
+</body>
+</html>
