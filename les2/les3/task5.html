@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+    <script>
+        //З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль).
+        //Вивести на екран назву транспортного засобу, яким він може керувати.
+        //1. Введення величин
+        let driveCategory = prompt('Введіть вашу категорію водія(А, В або С)', '')
+        let allowedCarToDrive
+        //2. Обчислення
+        switch (driveCategory) {
+            case 'A': allowedCarToDrive = 'Ви можете водити мотоцикл'
+                break;
+            case 'B': allowedCarToDrive = 'Ви можете водити легковий автомобіль'
+                break;
+            case 'C': allowedCarToDrive = 'Ви можете водити вантажний автомобіль'
+                break;
+            default: allowedCarToDrive = 'Такої категорії немає'
+                break;
+        }
+        alert(allowedCarToDrive);
+    </script>
+</head>
+<body>
+    <p><a href="./lesson3.html">Назад</a>  </p>
+</body>
+</html>

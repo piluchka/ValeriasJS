@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <script>
+        //З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини,
+        //у якої кількість цукерок є більшою, або вивести, що кількість однакова.
+        // 1. Введення величин
+        let firstChildName = prompt('Введіть ім\'я першої дитини')
+        let secondChildName = prompt('Введіть ім\'я другої дитини')
+        let candyFirstChildAmount = parseInt(prompt(`Введіть скільки цукерок у ${firstChildName} (перша дитина)`)) 
+        let candySecondChildAmount = parseInt(prompt(`Введіть скільки цукерок у ${secondChildName} (друга дитина)`))
+        //2. Обчислення
+        if(candyFirstChildAmount > candySecondChildAmount){
+            alert(`У ${firstChildName} більше цукерок, ніж у ${secondChildName}`)
+        } else if(candySecondChildAmount > candyFirstChildAmount){
+            alert(`У ${secondChildName} більше цукерок, ніж у ${firstChildName}`)
+        }else{
+            alert(`У дітей рівна кількість цукерок`)
+        }
+    </script>
+</head>
+<body>
+    <p><a href="./lesson3.html">Назад</a>  </p>
+</body>
+</html>

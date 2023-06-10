@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 7</title>
+    <script>
+        //З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься
+        //1. Введення величин
+        let monthNum = parseInt(prompt('Введіть номер місяця', ''))
+        //2. Обчислення
+        if (monthNum === 12 || monthNum <= 2 && monthNum !==0) {
+            alert('Це зима')
+        } else if(monthNum >=3 && monthNum < 6) {
+            alert('Це весна');
+        } else if(monthNum >=6 && monthNum < 9) {
+            alert('Це літо')
+        } else if(monthNum >=9 && monthNum < 12)
+        alert('Це осінь'); 
+        else{
+            alert('Такого номера місяця не існує');
+        }
+    </script>
+</head>
+<body>
+    <p><a href="./lesson3.html">Назад</a>  </p>
+</body>
+</html>

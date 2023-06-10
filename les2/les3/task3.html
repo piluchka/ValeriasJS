@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+    <script>
+        // Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.
+        //1. Вводимо значення
+        const minRandomNum = 1
+        const maxRandomNum = 5
+        let randomNum = minRandomNum + Math.floor(Math.random()*(maxRandomNum-minRandomNum+1))
+        let firstGuessedNum = parseInt(prompt('Система загадала число від 1 до 5. Вгадайте його з двох спроб. Введіть число від 1 до 5', ''))
+        let secondGuessedNum = parseInt(prompt('Супер! У вас є ще один варіант. Введіть ще одне число і зараз ми скажемо, чи ви вгадали!'))
+        //2. Обчислення
+        if(firstGuessedNum === randomNum || secondGuessedNum === randomNum){
+            alert('Ви вгадали!')
+        }else{
+            alert('На жаль, ви не вгадали:(')
+        }
+    </script>
+</head>
+<body>
+    <p><a href="./lesson3.html">Назад</a>  </p>
+</body>
+</html>
