@@ -157,6 +157,14 @@ body{
     background: #1a2669;
     padding: 5px 15px 5px 15px;
 }
+.homework_pages_list li{
+  margin-bottom: 15px;
+  border-bottom: solid 1px hsl(241, 42%, 50%);
+  padding-bottom: 15px;
+}
+.homework_pages_list li:first-child{
+  padding-top: 15px;
+}
 .homework_pages_list a{
     text-decoration: none;
     font-size: 40px;

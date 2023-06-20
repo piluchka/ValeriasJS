@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 8</title>
+  </head>
+  <body>
+    <script>
+      alert("Загадайте будь-яке число від 1 до 10")
+      guessing: for (let i = 0; i < 3; i++) {
+        let tryToGuessUserNum = confirm(Math.floor(Math.random() * 10) + 1)
+        if (tryToGuessUserNum === false) {
+          continue
+        } else {
+          alert("Комп'ютер вгадав")
+          break guessing
+        }
+      }
+    </script>
+    <p><a href="./lesson5.html">Назад</a></p>
+  </body>
+</html>
