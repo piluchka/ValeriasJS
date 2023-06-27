@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 10</title>
+  </head>
+  <body>
+    <script>
+      //Задача 10. Задача 10. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення для додатних показів температури.
+      function getAverageTemperaturesValue(...temperatures) {
+        let positiveSum = 0
+        let positiveNumAmount = 0
+        for (let i = 0; i < temperatures.length; i++) {
+          if (temperatures[i] > 0) {
+            positiveSum += temperatures[i]
+            positiveNumAmount++
+          }
+        }
+        let result = numsSum / numAmount
+        return result
+      }
+      alert(getAverageTemperaturesValue(1, 2, 3, 4, 5, 6, 7, 8, 9))
+    </script>
+    <p><a href="./lesson7.html">Назад</a></p>
+  </body>
+</html>
