@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 0</title>
+  </head>
+  <body>
+    <script>
+      // Створити функцію, яка за номером місяця повертає пору року,
+      //до якої відноситься цей місяць.
+      function getYearSeason() {
+        let monthNum = parseInt(prompt("Введите номер месяца:"))
+        let isSeason
+        switch (monthNum) {
+          case 12:
+          case 1:
+          case 2:
+            isSeason = "Зима"
+            break
+          case 3:
+          case 4:
+          case 5:
+            isSeason = "Весна"
+            break
+          case 6:
+          case 7:
+          case 8:
+            isSeason = "Літо"
+            break
+          case 9:
+          case 10:
+          case 11:
+            isSeason = "Осінь"
+            break
+          default:
+            isSeason = "Такого місяця не існує"
+            break
+        }
+        return isSeason
+      }
+      alert(getYearSeason())
+    </script>
+    <p><a href="./lesson7.html">Назад</a></p>
+  </body>
+</html>

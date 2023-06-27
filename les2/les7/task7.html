@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 7</title>
+  </head>
+  <body>
+    <script>
+      //Задача 7. Створити функцію, яка випадковим чином виводить на екран
+      //одне із 4 зображень (шляхи до зображень передаються у функцію)\
+      function getRandomPic(path1, path2, path3, path4) {
+        let finalPic
+        let randomPic = Math.floor(Math.random() * 4) + 1
+        switch (randomPic) {
+          case 1:
+            finalPic = document.write(`<img src = ${path1}>`)
+            break
+          case 2:
+            finalPic = document.write(`<img src = ${path2}>`)
+            break
+          case 3:
+            finalPic = document.write(`<img src = ${path3}>`)
+            break
+          case 4:
+            finalPic = document.write(`<img src = ${path4}>`)
+            break
+        }
+      }
+      getRandomPic("1.jpg", "./2.jpg", "./3.jpg", "./4.jpg")
+    </script>
+    <p><a href="./lesson7.html">Назад</a></p>
+  </body>
+</html>

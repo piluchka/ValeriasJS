@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 5</title>
+  </head>
+  <body>
+    <script>
+      //Задача 5. Створити окремі функції, які переводять:
+      //Сантиметри у дюйми;
+      //Кілограми у фунти;
+      //Кілометри у милі.
+      function getSmToIn(cm) {
+        let smToIn = (cm / 2.54).toFixed(2)
+        let result = `Це буде ${smToIn} дюймів в ${cm} сантиметрах`
+        return result
+      }
+      alert(getSmToIn(10))
+
+      function getKgToIbs(kg) {
+        let kgToIbs = (kg * 2.205).toFixed(2)
+        let result = `В ${kg} кілограмах буде ${kgToIbs} фунтів`
+        return result
+      }
+      alert(getKgToIbs(10))
+
+      function getKmToMiles(km) {
+        let kmToMiles = (km / 1.609).toFixed(2)
+        let result = `В ${km} кілометрах буде ${kmToMiles} міль`
+        return result
+      }
+      alert(getKmToMiles(10))
+    </script>
+    <p><a href="./lesson7.html">Назад</a></p>
+  </body>
+</html>

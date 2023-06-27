@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1</title>
+  </head>
+  <body>
+    <script>
+      //Задача 1. Створити функцію, яка за номером місяця повертає його назву.
+      function getNameOfTheMonth() {
+        let monthNum = parseInt(prompt("Введіть номер місяця"))
+        let finalName
+        switch (monthNum) {
+          case 12:
+            finalName = "Грудень"
+            break
+          case 1:
+            finalName = "Січень"
+            break
+          case 2:
+            finalName = "Лютий"
+            break
+          case 3:
+            finalName = "Березень"
+            break
+          case 4:
+            finalName = "Квітень"
+            break
+          case 5:
+            finalName = "Травень"
+            break
+          case 6:
+            finalName = "Червень"
+            break
+          case 7:
+            finalName = "Липень"
+            break
+          case 8:
+            finalName = "Серпень"
+            break
+          case 9:
+            finalName = "Вересень"
+            break
+          case 10:
+            finalName = "Жовтень"
+            break
+          case 11:
+            finalName = "Листопад"
+            break
+          default:
+            finalName = "Немає такого номеру місяця"
+            break
+        }
+        return finalName
+      }
+      alert(getNameOfTheMonth())
+    </script>
+    <p><a href="./lesson7.html">Назад</a></p>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 4</title>
+  </head>
+  <body>
+    <script>
+      //Задача 4. Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів:
+      //кількість парних, кількість додатних, кількість більших за 100.
+      //Буду робити однією функцією.
+      function getEvenNums(num1, num2, num3) {
+        let evenResult = 0
+        if (num1 % 2 === 0) evenResult++
+        if (num2 % 2 === 0) evenResult++
+        if (num3 % 2 === 0) evenResult++
+        return evenResult
+      }
+      alert(getEvenNums(2, 4, 5))
+
+      function getPosititveNums(num1, num2, num3) {
+        let positiveResult = 0
+        if (num1 > 0) positiveResult++
+        if (num2 > 0) positiveResult++
+        if (num3 > 0) positiveResult++
+        return positiveResult
+      }
+      alert(getPosititveNums(-4, -2, 0))
+
+      function getBiggerThanHundredNums(num1, num2, num3) {
+        let biggerNumsResult = 0
+        if (num1 > 100) biggerNumsResult++
+        if (num2 > 100) biggerNumsResult++
+        if (num3 > 100) biggerNumsResult++
+        return biggerNumsResult
+      }
+      alert(getBiggerThanHundredNums(900, 300, 100))
+    </script>
+    <p><a href="./lesson7.html">Назад</a></p>
+  </body>
+</html>

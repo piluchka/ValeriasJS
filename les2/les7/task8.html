@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 8</title>
+  </head>
+  <body>
+    <script>
+      //Задача 8. Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку
+      //на зображення (тег img повине знаходитись у середині тега a: <a> <img src=”шлях”> </a>
+      function getBanner(img, title, link) {
+        let finalBanner = document.write(`
+   <h1>${title}</h1>
+   <a href=${link}><img src=${img}></a>
+   `)
+        return finalBanner
+      }
+      getBanner(
+        "1.jpg",
+        "HELLO EVERYNYAN",
+        "https://www.youtube.com/watch?v=nlLhw1mtCFA&ab_channel=Brolita"
+      )
+    </script>
+    <p><a href="./lesson7.html">Назад</a></p>
+  </body>
+</html>
