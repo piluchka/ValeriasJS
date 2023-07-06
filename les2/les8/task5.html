@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 5</title>
+  </head>
+  <body>
+    <script>
+      //Задача 5. Дано послідовність оцінок учня. Підрахувати кількість:
+      // 1)	двійок
+      // 2)	кількість хороших оцінок (добре, відмінно);
+      // 3)	кількість оцінок, які нижче середнього.
+
+      function getAllStudGrades(gradesNum) {
+        let studentGraded = []
+        for (let i = 0; i < gradesNum; i++) {
+          let grade = parseInt(prompt(`Введіть ${i + 1} оцінку`))
+          studentGraded.push(grade)
+        }
+        return studentGraded
+      }
+      let gradesNum = parseInt(
+        prompt("Яку кількість оцінок ви хочете ввести для учня?")
+      )
+      let allGrades = getAllStudGrades(gradesNum)
+
+      function getAmountOfGradesTwo(grades) {
+        let counter = 0
+        for (let i = 0; i < grades.length; i++) {
+          if (grades[i] === 2) {
+            counter++
+          }
+        }
+        return counter
+      }
+
+      let amountOfTwoGrades = getAmountOfGradesTwo(allGrades)
+
+      function getAmountOfFourAndFiveGrades(grades) {
+        let counter = 0
+        for (let i = 0; i < grades.length; i++) {
+          if (grades[i] === 4 || grades[i] === 5) {
+            counter++
+          }
+        }
+        return counter
+      }
+
+      let amountOfFourAndFiveGrades = getAmountOfFourAndFiveGrades(allGrades)
+
+      function getLessThanAverageGraderNum(grades) {
+        let gradesSum = 0
+        let gradesNum = 0
+        for (let i = 0; i < grades.length; i++) {
+          gradesNum++
+          gradesSum += grades[i]
+        }
+        let avaregeGrade = gradesSum / gradesNum
+        let counter = 0
+        for (let i = 0; i < grades.length; i++) {
+          if (grades[i] < avaregeGrade) {
+            counter++
+          }
+        }
+        return counter
+      }
+
+      let numOfLessThanAverage = getLessThanAverageGraderNum(allGrades)
+
+      alert(`Кількість двійок учня: ${amountOfTwoGrades}\n
+Кількість хороших оцінок(добре, відмінно): ${amountOfFourAndFiveGrades}\n
+Кілкість оцінок учня, які є нижче середнього балу: ${numOfLessThanAverage} \n`)
+    </script>
+    <p><a href="./lesson8.html">Назад</a></p>
+  </body>
+</html>

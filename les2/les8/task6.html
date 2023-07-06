@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 6</title>
+  </head>
+  <body>
+    <script>
+      //Задача 6. Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити користувач (кількість грошей задається).
+      let prodPrices = [214, 1999, 100, 419, 888, 150, 400, 1545, 1200, 1000]
+      let prodNames = [
+        "Дитячий годинник",
+        "Бездротова зарядка",
+        "Чіпси Прінглс",
+        "Іграшка-кіт",
+        "Урна для мусора",
+        "Підставка для телефона",
+        "Середній кошик солодощів",
+        "Велика іграшка-панда",
+        "Монітор",
+        "Смарт-годиннник",
+      ]
+      let usersMoney = parseFloat(
+        prompt("Введіть кількість грошей, які ви хочете витратити")
+      )
+
+      function getWhatUserAbleToBuy(productPrices, productNames, usersMoney) {
+        let prodsUserAbleToBuy = []
+        for (let i = 0; i < prodPrices.length; i++) {
+          if (prodPrices[i] <= usersMoney) {
+            prodsUserAbleToBuy.push(`\n${prodNames[i]} ${prodPrices[i]}грн`)
+          }
+        }
+        return prodsUserAbleToBuy
+      }
+
+      let prodsUserAbleToBuy = getWhatUserAbleToBuy(
+        prodPrices,
+        prodNames,
+        usersMoney
+      )
+      alert(`Ви можете собі купити: ${prodsUserAbleToBuy}`)
+    </script>
+    <p><a href="./lesson8.html">Назад</a></p>
+  </body>
+</html>

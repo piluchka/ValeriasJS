@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Task 4</title>
+</head>
+<body>
+   <script>
+      //Задача 4. Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+// •	починаються на букву «А»;
+// •	перша і остання літери співпадають;
+// •	складаються з більше ніш 5 символів;
+
+function getCarNumbers(numsAmount) {
+  let carNums = []
+  for (let i = 0; i < numsAmount; i++) {
+    let num = prompt(`Введіть номер ${i + 1} машини`)
+    carNums.push(num)
+  }
+  return carNums
+}
+let numsAmount = parseInt(prompt("Скільки номерів машин ви хочете ввести?"))
+let carNums = getCarNumbers(numsAmount)
+
+function getAmountStartsFromA(carNums) {
+  let counter = 0
+  for (let i = 0; i < carNums.length; i++) {
+    let firstLetter = carNums[i].charAt(0)
+    if (firstLetter === "A") {
+      counter++
+    }
+  }
+  return counter
+}
+
+let amountStartsFromA = getAmountStartsFromA(carNums)
+
+function getFirstAndLastLetterAlikeNum(carNums) {
+  let counter = 0
+  for (let i = 0; i < carNums.length; i++) {
+    let firstLetter = carNums[i].charAt(0)
+    let lastLetter = carNums[i].charAt(carNums[i].length - 1)
+    if (firstLetter === lastLetter) {
+      counter++
+    }
+  }
+  return counter
+}
+let firstAndLastLetterAlikeNum = getFirstAndLastLetterAlikeNum(carNums)
+
+function getBiggerThan5Num(carNums) {
+  let counter = 0
+  for (let i = 0; i < carNums.length; i++) {
+    if (carNums[i].length > 5) {
+      counter++
+    }
+  }
+  return counter
+}
+let biggerThan5Num = getBiggerThan5Num(carNums)
+
+alert(`Кількість номерів, які починаються на букву «А»: ${amountStartsFromA}\n
+Кількість номерів, де перша і остання літери співпадають: ${firstAndLastLetterAlikeNum}\n
+Кількість номерів, які складаються з більше ніш 5 символів: ${biggerThan5Num} `)
+   </script>
+   <p><a href="./lesson8.html">Назад</a></p>
+   
+</body>
+</html>
