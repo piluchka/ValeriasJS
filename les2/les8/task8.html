@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3</title>
+  </head>
+  <body>
+    <script>
+      //Задача 8. Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим чином значеннями від -500 до 500).
+      //Надаючи користувачу можливість вибирати номери елементів  (поки він не відмовиться). Знаходити сумарний виграш.
+
+      function getGameArray(minValue, maxValue, arrayLength) {
+        let gameArray = []
+        for (let i = 0; i < arrayLength; i++) {
+          let randomNum =
+            Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
+          gameArray.push(randomNum)
+        }
+        return gameArray
+      }
+
+      let gameArray = getGameArray(-500, 500, 10)
+
+      function userPlaying(gameArray) {
+        let sum = 0
+        let userNum
+        let continueQuestion
+        let usedNums = []
+        do {
+          userNum = parseInt(
+            prompt("Введіть число від 1 до 10, щоб отримати виграш!")
+          )
+          if (userNum >= 1 && userNum <= 10) {
+            if (usedNums.includes(userNum)) {
+              alert("Ви вже обирали це число.")
+              continueQuestion = confirm("Ви хочете продовжити?")
+              continue
+            } else if (!usedNums.includes(userNum)) usedNums.push(userNum)
+            sum += gameArray[userNum - 1]
+            alert(`Ви виграли: ${gameArray[userNum - 1]} грн`)
+            continueQuestion = confirm("Ви хочете продовжити?")
+          } else {
+            alert("Невірне число. Введіть число від 1 до 10")
+            continueQuestion = true
+            continue
+          }
+        } while (continueQuestion === true)
+        return sum
+      }
+
+      let a = userPlaying(gameArray)
+      alert(`Ваш загальний виграш: ${a} грн`)
+    </script>
+    <p><a href="./lesson8.html">Назад</a></p>
+  </body>
+</html>
