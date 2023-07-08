@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 7</title>
+  </head>
+  <body>
+    <script>
+      //7.Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.
+      let prices = [27.5, 100, 1550, 259.9, 1900, 1100]
+      document.write(`Початкові ціни: ${prices}<br>`)
+      prices.forEach((price, index, prices) => {
+        if (price > 1000) {
+          const discount = price * (30 / 100)
+          prices[index] -= discount
+        }
+      })
+      document.write(`Ціни з використанням знижки: ${prices}`)
+    </script>
+    <p><a href="./lesson9.html">Назад</a></p>
+  </body>
+</html>

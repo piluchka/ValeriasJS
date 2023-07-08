@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 10</title>
+  </head>
+  <body>
+    <script>
+      //10. Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у грн.
+      let prices = ["20грн", "1.10грн", "400грн", "5.50грн", "130грн", "10грн"]
+      const tax = 20
+
+      function getEveryAmountOfTax(prices, tax) {
+        let amountsOfTax = []
+        tax = tax / 100
+        let taxAmount
+        for (let i = 0; i < prices.length; i++) {
+          taxAmount = parseFloat(prices[i]) * tax
+          amountsOfTax.push(`${taxAmount.toFixed(2)}грн`)
+        }
+        return amountsOfTax
+      }
+      let amountsOfTax = getEveryAmountOfTax(prices, tax)
+      document.write(`Ціни:${prices}<br>`)
+      document.write(`Податок ${tax}% для кожної ціни складає: ${amountsOfTax}`)
+    </script>
+    <p><a href="./lesson9.html">Назад</a></p>
+  </body>
+</html>

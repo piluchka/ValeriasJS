@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 8</title>
+  </head>
+  <body>
+    <script>
+      //8. Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»
+      let autoNums = ["AB123", "BC583", "AA231", "CC999", "AC678"]
+      function creatNewArrayOnlyAAutoNums(autoNums) {
+        let autoNumsStartsFromA = []
+        for (let i = 0; i < autoNums.length; i++) {
+          if (autoNums[i].charAt(0) === "A")
+            autoNumsStartsFromA.push(autoNums[i])
+        }
+        return autoNumsStartsFromA
+      }
+      let autoNumsStartsFromA = creatNewArrayOnlyAAutoNums(autoNums)
+      document.write(`Початкові номери машин: ${autoNums}<br>`)
+      document.write(
+        `Номери машин, які починаються на А: ${autoNumsStartsFromA}`
+      )
+    </script>
+    <p><a href="./lesson9.html">Назад</a></p>
+  </body>
+</html>
