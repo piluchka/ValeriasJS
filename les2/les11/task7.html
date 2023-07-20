@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 7</title>
+  </head>
+  <body>
+    <script>
+      //Виводила за допомогою ще console.log, бо там простіше зрозуміти що до чого.
+      function getRandomWeeklyIncomesOfShopsArray(
+        shopsAmount,
+        minValue,
+        maxValue
+      ) {
+        let incomes = []
+
+        for (let i = 0; i < shopsAmount; i++) {
+          let weeklyIncome = []
+          for (let j = 0; j < 7; j++) {
+            let randomDailyIncome =
+              Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
+            weeklyIncome.push(randomDailyIncome)
+          }
+          incomes.push(weeklyIncome)
+        }
+        return incomes
+      }
+
+      let incomes = getRandomWeeklyIncomesOfShopsArray(
+        parseInt(prompt("Введіть число магазинів")),
+        parseInt(prompt("Введіть число мінімального прибутку")),
+        parseInt(prompt("Введіть число максимального прибутку"))
+      )
+      document.write(`Тижневі прибутки: ${incomes}<br>`)
+      console.log(incomes)
+
+      // 7) відсортувати кожен тиждень за зростанням
+      function getSortedWeeksFromLow(incomeArray) {
+        let sortedIncomes = []
+        for (let i = 0; i < incomeArray.length; i++) {
+          incomeArray[i].sort((num1, num2) => num1 - num2)
+          sortedIncomes.push(incomeArray[i])
+        }
+        return sortedIncomes
+      }
+
+      let sortedIncomes = getSortedWeeksFromLow(incomes)
+      document.write(`Відсортовані тижні: ${sortedIncomes}`)
+      console.log(sortedIncomes)
+
+      
+    </script>
+    <p><a href="./lesson11.html">Назад</a></p>
+  </body>
+</html>
