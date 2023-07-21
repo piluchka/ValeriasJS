@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 6</title>
+  </head>
+  <body>
+    <script>
+      let names = [
+        "Oleg",
+        "Slava",
+        "Lera",
+        "Valera",
+        "Olga",
+        "Viktor",
+        "Petr",
+        "Volodya",
+        "Seva",
+        "Elena",
+        "Katya",
+        "Jenya",
+        "Larisa",
+        "Rostic",
+        "Svetlana",
+        "Yulia",
+        "Andrey",
+        "Kostik",
+        "Sereja",
+        "Vitalik",
+        "Yarik",
+        "Jora",
+      ]
+      document.write(`Масив імен: ${names}<br>`)
+      function getSelectionSortedArray(array) {
+        const prevLastIndex = array.length - 2
+        for (let i = 0; i <= prevLastIndex; i++) {
+          let minIndex = i
+          for (let j = i + 1; j < array.length; j++) {
+            if (array[j].length < array[minIndex].length) minIndex = j
+          }
+          if (i !== minIndex) {
+            let temp = array[i]
+            array[i] = array[minIndex]
+            array[minIndex] = temp
+          }
+        }
+        return array
+      }
+
+      let sortedArray = getSelectionSortedArray(names)
+      document.write(`Сортований масив за довжиною елементів: ${names}<br>`)
+
+      function getBinarySearchResult(array, elementLength) {
+        let start = 0
+        let end = array.length - 1
+        let result
+        while (start <= end) {
+          let middle = Math.floor((start + end) / 2)
+          if (array[middle].length === elementLength)
+            return (result = `Є такої довжини ім'я під індексом ${middle}`)
+          if (array[middle].length > elementLength) end = middle - 1
+          if (array[middle].length < elementLength) start = middle + 1
+        }
+        return (result = "Такого елементу не має")
+      }
+
+      let binarySearchResult = getBinarySearchResult(names, 5)
+      document.write(binarySearchResult)
+    </script>
+    <p><a href="./lesson12.html">Назад</a></p>
+  </body>
+</html>

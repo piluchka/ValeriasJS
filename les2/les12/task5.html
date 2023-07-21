@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 5</title>
+  </head>
+  <body>
+    <script>
+      let names = [
+        "Oleg",
+        "Slava",
+        "Lera",
+        "Valera",
+        "Olga",
+        "Viktor",
+        "Petr",
+        "Volodya",
+        "Seva",
+        "Elena",
+        "Katya",
+        "Jenya",
+        "Larisa",
+        "Rostic",
+        "Svetlana",
+        "Yulia",
+        "Andrey",
+        "Kostik",
+        "Sereja",
+        "Vitalik",
+        "Yarik",
+        "Jora",
+      ]
+      document.write(`Масив імен: ${names}<br>`)
+      //Сортування вибором 2
+      function getSelectionSortedArray(array) {
+        const prevLastIndex = array.length - 2
+        for (let i = 0; i <= prevLastIndex; i++) {
+          let curMinIndex = i
+          for (let j = i + 1; j < array.length; j++) {
+            if (array[j] < array[curMinIndex]) curMinIndex = j
+          }
+          if (i !== curMinIndex) {
+            let temp = array[i]
+            array[i] = array[curMinIndex]
+            array[curMinIndex] = temp
+          }
+        }
+        return array
+      }
+
+      let sortedNames = getSelectionSortedArray(names)
+      document.write(`Упорядкований масив імен: ${names}<br>`)
+
+      function getBinarySearchResult(array, searchElement) {
+        let start = 0
+        let end = array.length - 1
+        let result
+        while (start <= end) {
+          let middle = Math.floor((start + end) / 2)
+          if (array[middle] === searchElement)
+            return (result = `Є такий елемент, він під індексом ${middle}`)
+          if (array[middle] > searchElement) end = middle - 1
+          if (array[middle] < searchElement) start = middle + 1
+        }
+        return (result = "Немає такого елементу")
+      }
+
+      let binarySearchResult = getBinarySearchResult(sortedNames, "Olga")
+      document.write(binarySearchResult)
+    </script>
+    <p><a href="./lesson12.html">Назад</a></p>
+  </body>
+</html>
