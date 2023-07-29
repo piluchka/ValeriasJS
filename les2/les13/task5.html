@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 5</title>
+  </head>
+  <body>
+    <script>
+      // Задача 5. Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і робиться перевірка.
+      function getPlusTrainer(minNum, maxNum) {
+        setInterval(function () {
+          const firstRandomNum =
+            Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum
+          const secondRandomNum =
+            Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum
+          let answer = parseInt(
+            prompt(`${firstRandomNum} + ${secondRandomNum} =`)
+          )
+          if (answer === firstRandomNum + secondRandomNum) {
+            alert(`Правильно! Скоро буде наступний приклад`)
+          } else {
+            alert(`Не вірно. Чекайте на наступний приклад`)
+          }
+        }, 10000)
+      }
+
+      getPlusTrainer(1, 10)
+    </script>
+    <p><a href="./lesson13.html">Назад</a></p>
+  </body>
+</html>

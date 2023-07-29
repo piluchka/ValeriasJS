@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2</title>
+  </head>
+  <body>
+    <script>
+      // Задача 2. Реалізувати бінарний пошук (розглядали на попередніх уроках) з використанням
+      // рекурсивного алгоритму.
+      //Рекурсивний бінарний пошук
+      function recursiveBinarySearch(array, start, end, searchingEl) {
+        if (start > end) return false
+        let mid = Math.floor((start + end) / 2)
+        if (array[mid] === searchingEl) return true
+        if (array[mid] > searchingEl)
+          return recursiveBinarySearch(array, start, mid - 1, searchingEl)
+        if (array[mid] < searchingEl)
+          return recursiveBinarySearch(array, mid + 1, end, searchingEl)
+        return false
+      }
+
+      let array = [2, 4, 7, 11, 32, 67, 89]
+      let find = recursiveBinarySearch(array, 0, array.length - 1, 67)
+      document.write(find)
+    </script>
+    <p><a href="./lesson13.html">Назад</a></p>
+  </body>
+</html>

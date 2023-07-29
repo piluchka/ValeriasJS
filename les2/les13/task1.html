@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1</title>
+  </head>
+  <body>
+    <script>
+      // Задача 1.Визначити 10x . Розв’язати з
+      // використанням рекурсивних і нерекурсивних алгоритмів
+
+      //Рекурсія
+      function findNumberRelatedToI(i) {
+        if (i === 0) {
+          return 1
+        } else {
+          return findNumberRelatedToI(i - 1) + 2 * i
+        }
+      }
+
+      let numberX = findNumberRelatedToI(10)
+      document.write(`X10 = ${numberX}`)
+
+      //Цикли
+      // function findNumberRelatedToI(i) {
+      //   let result = 1
+      //   for (let j = 1; j <= i; j++) {
+      //     result += 2 * j
+      //   }
+      //   return result
+      // }
+
+      // let numberX = findNumberRelatedToI(10)
+      // document.write(`X10 = ${numberX}`)
+    </script>
+    <p><a href="./lesson13.html">Назад</a></p>
+  </body>
+</html>
