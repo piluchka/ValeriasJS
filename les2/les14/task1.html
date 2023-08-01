@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1</title>
+  </head>
+  <body>
+    <script>
+      // Задача 1. Описати масив об’єктів – сайтів розроблених компанією з такими властивостями
+      // ----- Властивості ------
+      // назва компанії на час розробки (назву періодично змінюють)
+      // власник компанії
+      // споснсори (масив спонсорів)
+      //              * прізвище спонсора
+      //       * ім’я  спонсора
+      //       * сума вкладень спонсора
+      // рік випуску
+      // вартість сайту
+
+      let sitesList = [
+        {
+          //0
+          companyName: "Free",
+          owner: "Valeria",
+          sponsors: [
+            { surname: "Babrisko", name: "Lesya", depositSum: 5000 },
+            { surname: "Golovko", name: "Evgeniya", depositSum: 40000 },
+            { surname: "Pushko", name: "Anastasia", depositSum: 300 },
+            { surname: "Angelova", name: "Elena", depositSum: 100000 },
+          ],
+          releaseYear: 2023,
+          sitePrice: 5000000,
+        },
+        {
+          //1
+          companyName: "Free",
+          owner: "Valeria",
+          sponsors: [
+            { surname: "Bershova", name: "Nadya", depositSum: 5133 },
+            { surname: "Kolsuk", name: "Larysa", depositSum: 16862 },
+            { surname: "Steppon", name: "Barbara", depositSum: 41984 },
+            { surname: "Nakaznaya", name: "Tatiana", depositSum: 6874 },
+          ],
+          releaseYear: 2020,
+          sitePrice: 168460,
+        },
+        {
+          //2
+          companyName: "Gargulya",
+          owner: "Nina",
+          sponsors: [
+            { surname: "Pupsichka", name: "Ganna", depositSum: 98 },
+            { surname: "Levko", name: "Sofia", depositSum: 646 },
+            { surname: "Deggo", name: "Katya", depositSum: 166 },
+            { surname: "Shpunka", name: "Sarah", depositSum: 872 },
+          ],
+          releaseYear: 2011,
+          sitePrice: 1890,
+        },
+        {
+          //3
+          companyName: "Dodo",
+          owner: "Valeria",
+          sponsors: [
+            { surname: "Sushko", name: "Diana", depositSum: 9841 },
+            { surname: "Levchenko", name: "Svetlana", depositSum: 3216 },
+            { surname: "Yermanova", name: "Yaroslava", depositSum: 9649 },
+            { surname: "Skakun", name: "Olga", depositSum: 6516 },
+          ],
+          releaseYear: 2019,
+          sitePrice: 68430,
+        },
+      ]
+
+      // 1) загальну вартість усіх сайтів
+      let totalSitesPrice = sitesList.reduce(
+        (prevSum, site) => prevSum + site.sitePrice,
+        0
+      )
+      document.write(`Загальна вартість всіх сайтів - ${totalSitesPrice}$<br>`)
+
+      // 2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
+      let sitesMadeBetween2000And2009Number = sitesList.reduce(
+        (prevNumOfSites, site) =>
+          site.year > 2000 && site.year < 2009
+            ? prevNumOfSites + 1
+            : prevNumOfSites,
+        0
+      )
+      document.write(
+        `Кількість сайтів, що було зроблено між 2000 та 2009 рр: ${sitesMadeBetween2000And2009Number}<br>`
+      )
+
+      // 3) кількість сайтів, де сума спонсорських вкладень була більшою за 100.000
+      let sitesWithDepositSumGreaterThan100000 = sitesList.reduce(
+        (prevSitesCount, site) => {
+          let sum = 0
+          for (let i = 0; i < site.sponsors.length; i++) {
+            sum += site.sponsors[i].depositSum
+          }
+          if (sum > 100000) {
+            prevSitesCount += 1
+          }
+          return prevSitesCount
+        },
+        0
+      )
+      document.write(
+        `Kількість сайтів, де сума спонсорських вкладень була більшою за 100.000: ${sitesWithDepositSumGreaterThan100000}<br>`
+      )
+
+      // 4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+      function getAllSitesSponsorsList(sites) {
+        let sponsorsList = []
+        for (const site of sites) {
+          for (const sponsor of site.sponsors) {
+            sponsorsList.push(`${sponsor.name} ${sponsor.surname}<br>`)
+          }
+        }
+        return sponsorsList
+      }
+      let sponsorsList = getAllSitesSponsorsList(sitesList)
+      document.write(`Усі спонсорки: ${sponsorsList}`)
+
+      // 5) знайти рік, коли прибуток був найбільшим
+
+      let maxIncome = -Infinity
+      let theMostIncomeYear
+      for (const site of sitesList) {
+        for (const key in site) {
+          if (site[key] > maxIncome) {
+            maxIncome = site[key]
+            theMostIncomeYear = site.releaseYear
+          }
+        }
+      }
+      document.write(
+        `Рік, коли прибуток був найбільшим: ${theMostIncomeYear} рік`
+      )
+
+      // 6) упорядкувати список за спаданням прибутку
+      let sortedSitesList = sitesList.sort((a, b) => {
+        return b.sitePrice - a.sitePrice
+      })
+      console.log(sortedSitesList)
+
+      // 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+      // let copiedSiteList = sitesList.map((site) => JSON.parse(JSON.stringify(site)))
+      let sitesPriceLessThan10000 = sitesList.filter(
+        (site) => site.sitePrice < 10000
+      )
+      let independedListSitesPriceLessThan10000 = sitesPriceLessThan10000.map(
+        (site) => JSON.parse(JSON.stringify(site))
+      )
+      console.log(independedListSitesPriceLessThan10000)
+      let sitesPriceGreaterThan10000 = sitesList.filter(
+        (site) => site.sitePrice > 10000
+      )
+      let independedListSitesPriceGreaterThan10000 =
+        sitesPriceGreaterThan10000.map((site) =>
+          JSON.parse(JSON.stringify(site))
+        )
+      console.log(independedListSitesPriceGreaterThan10000)
+    </script>
+    <p><a href="./lesson14.html">Назад</a></p>
+  </body>
+</html>
