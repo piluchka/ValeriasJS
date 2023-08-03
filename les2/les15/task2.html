@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2</title>
+  </head>
+  <body>
+    <script>
+      // !Задача 2. Створити об’єкт «Авто».
+      // Авто
+      // Поля(властивості)
+      // Марка
+      // Розмір бака
+      // Кількість наявних літрів
+      // Кількість місць
+      // Кількість пасажирів
+      // Методи (дії)
+      // Заправка на вказану кількість літрів
+      // Виведення кількості пасажирів
+      // Додавання пасажирів
+      // Висадка пасажирів
+
+      class Auto {
+        constructor(
+          brand,
+          tankSize,
+          availableLiterAmount,
+          sitsAmount,
+          passengersAmount
+        ) {
+          this.brand = brand
+          this.tankSize = tankSize
+          this.availableLiterAmount = availableLiterAmount
+          this.seatsAmount = sitsAmount
+          this.passengersAmount = passengersAmount
+        }
+        refuel(gasAmount) {
+          if (this.tankSize < gasAmount + this.availableLiterAmount)
+            throw new Error("Too many liters!")
+          else this.availableLiterAmount += gasAmount
+        }
+        showPassengers() {
+          document.write(
+            `The passengers amount in the auto is ${this.passengersAmount}`
+          )
+        }
+        addingPassengers(passengersAmount) {
+          if (this.passengersAmount + passengersAmount > this.seatsAmount)
+            throw new Error("There are not enough seats")
+          else this.passengersAmount += passengersAmount
+        }
+        dropOffPassengers(passengersAmount) {
+          if (
+            this.passengersAmount === 0 ||
+            passengersAmount > this.passengersAmount
+          )
+            throw new Error(
+              "There are no passengers left or the number of passengers to drop off is incorrect"
+            )
+          else this.passengersAmount -= passengersAmount
+        }
+        toString() {
+          return `Brand: ${this.brand} - Tanks Size: ${this.tankSize} - Seats Amount in Auto: ${this.seatsAmount}`
+        }
+      }
+
+      let audi = new Auto("Audi", 50, 15, 5, 2)
+      document.write(audi)
+    </script>
+    <p><a href="./lesson15.html">Назад</a></p>
+  </body>
+</html>

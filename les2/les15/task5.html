@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 5</title>
+  </head>
+  <body>
+    <script>
+      // !Задача 5. Розробити клас «Керівник танців»
+      // Поля
+      // Масив імен хлопців
+      // Масив імен дівчат
+      // Методи
+      // Метод випадкового вибору імені хлопця
+      // Метод випадкового вибору імені дівчини
+      // Метод виведення пари для танців
+      // Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+
+      class HeadOfDanceClass {
+        constructor(boysNamesList, girlsNamesList) {
+          this.boysNamesList = boysNamesList
+          this.girlsNamesList = girlsNamesList
+        }
+        randomNums(minValue, maxValue) {
+          return (
+            minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+          )
+        }
+        getRandomBoyName() {
+          const randomNameIndex = this.randomNums(
+            0,
+            this.boysNamesList.length - 1
+          )
+          return this.boysNamesList[randomNameIndex]
+        }
+        getRandomGirlName() {
+          const randomNameIndex = this.randomNums(
+            0,
+            this.girlsNamesList.length - 1
+          )
+          return this.girlsNamesList[randomNameIndex]
+        }
+        showPair() {
+          document.write(
+            `${this.getRandomGirlName()} and ${this.getRandomBoyName()}<br>`
+          )
+        }
+        run() {
+          setInterval(() => this.showPair(), 2000)
+        }
+      }
+
+      let girlsNamesList = [
+        "Amanda",
+        "Joy",
+        "Sarah",
+        "Linda",
+        "Betty",
+        "Sonya",
+        "Anna",
+      ]
+      let boysNamesList = [
+        "Johnny",
+        "Dave",
+        "Anthony",
+        "Max",
+        "Matt",
+        "Cillian",
+        "Rayan",
+      ]
+
+      let headOfDanceClass1 = new HeadOfDanceClass(
+        boysNamesList,
+        girlsNamesList
+      )
+      headOfDanceClass1.run()
+    </script>
+    <p><a href="./lesson15.html">Назад</a></p>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 4</title>
+  </head>
+  <body>
+    <script>
+      // !Задача 4. Розробити клас Baner
+      // Поля
+      // Масив об’єктів ( графічних зображень та посилань на сайти)
+      // методи
+      // Метод випадкового вибору об’єкта (графічного зображення та посилання)
+      // Метод виведення випадкового банера
+
+      let objArray = [
+        {
+          graphicImage:
+            "https://i.pinimg.com/736x/cf/09/4f/cf094f342ce8bda947435a68fb67334a.jpg",
+          siteLink: "https://www.google.com",
+        },
+        {
+          graphicImage:
+            "https://c1.peakpx.com/wallpaper/792/840/984/squirrel-animal-wood-nature-wallpaper-thumb.jpg",
+          siteLink: "https://www.pinterest.com/",
+        },
+        {
+          graphicImage:
+            "https://c4.wallpaperflare.com/wallpaper/872/823/736/tiger-artwork-digital-art-snow-animals-hd-wallpaper-preview.jpg",
+          siteLink: "https://chat.openai.com/",
+        },
+        {
+          graphicImage:
+            "https://img.freepik.com/premium-vector/set-vector-hand-drawn-flat-woodland-animals-vertical-set-funny-background-forest-scene_150240-1085.jpg",
+          siteLink: "https://translate.google.com/",
+        },
+        {
+          graphicImage:
+            "https://www.xtrafondos.com/wallpapers/vertical/zorro-animal-6528.jpg",
+          siteLink: "https://drive.google.com/",
+        },
+        {
+          graphicImage:
+            "https://c1.wallpaperflare.com/preview/687/678/334/nature-animal-world-fawn-single.jpg",
+          siteLink: "https://docs.google.com/",
+        },
+      ]
+      class Banner {
+        constructor(objArray) {
+          this.objArray = objArray
+        }
+        getRandomNum(minValue, maxValue) {
+          return (
+            minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+          )
+        }
+        getRandomObj() {
+          const randNum = this.getRandomNum(0, this.objArray.length - 1)
+          return this.objArray[randNum]
+        }
+        showBanner() {
+          document.write(`<a href=${this.getRandomObj().siteLink}>`)
+          document.write(`<img src=${this.getRandomObj().graphicImage}>`)
+          document.write("</a>")
+        }
+      }
+
+      let banner1 = new Banner(objArray)
+      banner1.showBanner()
+    </script>
+    <p><a href="./lesson15.html">Назад</a></p>
+  </body>
+</html>

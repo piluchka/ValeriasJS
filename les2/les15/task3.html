@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3</title>
+  </head>
+  <body>
+    <script>
+      // !Задача 3. Розробити клас MultChecker для перевірки таблиці множення
+      // Поля
+      // Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)
+      // Кількість правильних відповідей
+      // Кількість неправильних відповідей
+      // Методи
+      // Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+      // Перевірка правильності вказаної відповіді
+      // render
+      class MultChecker {
+        constructor(checkingNumber) {
+          this.checkingNumber = checkingNumber
+          this.rightAnswersNum = 0
+          this.wrongAnswersNum = 0
+          this.secondNumber
+        }
+        getRandomNumber(minValue, maxValue) {
+          return (
+            minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+          )
+        }
+        generateSecondNumber() {
+          this.secondNumber = this.getRandomNumber(1, 10)
+        }
+        isCorrect(userAnswer) {
+          const rightAnswer = this.checkingNumber * this.secondNumber
+          if (userAnswer === rightAnswer) this.rightAnswersNum++
+          else this.wrongAnswersNum++
+        }
+        render() {
+          do {
+            this.generateSecondNumber()
+            let userAnswer = parseInt(
+              prompt(
+                `Enter the right answer of this example: ${this.checkingNumber} * ${this.secondNumber} `
+              )
+            )
+            this.isCorrect(userAnswer)
+          } while (confirm("Wanna continue?"))
+          document.write(`Number being checked: ${this.checkingNumber}<br>`)
+          document.write(
+            `Number of correct answers: ${this.rightAnswersNum}<br>`
+          )
+          document.write(`Number of wrong answers: ${this.wrongAnswersNum}<br>`)
+        }
+      }
+      let checker = new MultChecker(
+        parseInt(
+          prompt("What number do you want to practice multiplication on?")
+        )
+      )
+      checker.render()
+    </script>
+    <p><a href="./lesson15.html">Назад</a></p>
+  </body>
+</html>

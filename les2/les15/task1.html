@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1</title>
+  </head>
+  <body>
+    <script>
+      // !Задача 1. Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+      // Тир
+      // Поля(властивості)
+      // Масив, у якому зберігається поле з зайцями
+      // Методи (дії)
+      // Метод пострілу (задається позиція пострілу)
+      // Виведення ігрового поля
+
+      class ShootingRange {
+        constructor(cellNums, rabbitsAmount, shotsAmount) {
+          this.cellNums = cellNums
+          this.rabbitsAmount = rabbitsAmount
+          this.shotsAmount = shotsAmount
+          this.playField
+        }
+        createPlayField() {
+          let playField = new Array(this.cellNums).fill(0)
+          for (let i = 0; i < this.rabbitsAmount; ) {
+            const randomNum = Math.floor(Math.random() * playField.length)
+            if (playField[randomNum] === 0) {
+              playField[randomNum] = 1
+              i++
+            }
+          }
+          this.playField = playField
+        }
+        shooting() {
+          while (this.shotsAmount > 0 && this.rabbitsAmount > 0) {
+            let position = prompt(
+              `Enter the position from 1 to ${this.cellNums}`
+            )
+            if (this.playField[position - 1] === 1) {
+              alert("You got one!")
+              this.rabbitsAmount--
+              this.shotsAmount--
+              this.playField[position - 1] = 0
+            } else {
+              alert("Oh snap! You missed.")
+              this.shotsAmount--
+            }
+          }
+        }
+        showPlayField() {
+          document.write("<table style='border-collapse: collapse;'>")
+          document.write("<tr>")
+
+          for (let i = 0; i < this.playField.length; i++) {
+            document.write(
+              "<td style='border: 1px solid black; padding: 5px; width: 20px; height: 20px;'>"
+            )
+            document.write(this.playField[i])
+            document.write("</td>")
+          }
+
+          document.write("</tr>")
+          document.write("</table>")
+        }
+        playGame() {
+          this.createPlayField()
+          this.shooting()
+          this.showPlayField()
+          document.write(`Rabbits left: ${this.rabbitsAmount}`)
+        }
+      }
+
+      let a = new ShootingRange(10, 3, 5)
+      a.playGame()
+    </script>
+    <p><a href="./lesson15.html">Назад</a></p>
+  </body>
+</html>
