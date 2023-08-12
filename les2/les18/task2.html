@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="task2.css" />
+    <title>Converter</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="label">
+        <label>
+          Amount in UAH
+          <input type="number" value="0" id="uah" />
+        </label>
+      </div>
+      <div>
+        <button type="button" id="convert" class="btn btn-outline-success">
+          Convert
+        </button>
+      </div>
+      <hr />
+      <div>
+        <p>Amount in EUR - <span id="eur"></span></p>
+      </div>
+      <div>
+        <p>Amount in USD - <span id="usd"></span></p>
+      </div>
+    </div>
+    <p><a href="./lesson18.html">Назад</a></p>
+
+    <script>
+      function convert() {
+        const eurRate = 41.55
+        const usdRate = 37.44
+        let uah = parseFloat(document.getElementById("uah").value)
+        let uahToUsd = uah / usdRate
+        let uahToEur = uah / eurRate
+        document.getElementById("eur").innerText = uahToEur.toFixed(2)
+        document.getElementById("usd").innerText = uahToUsd.toFixed(2)
+      }
+      window.onload = function () {
+        document.getElementById("convert").onclick = convert
+      }
+    </script>
+  </body>
+</html>

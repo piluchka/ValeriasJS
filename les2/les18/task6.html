@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="labelDiv">
+        <label>
+          Enter score Amount
+          <input type="number" id="scoreAmount" />
+        </label>
+        <button id="getTable">get table</button>
+      </div>
+      <hr class="hr" />
+      <hr />
+      <button id="getSum">get average</button>
+      <p>Average score is <span id="averageScore"></span></p>
+    </div>
+    <p><a href="./lesson18.html">Назад</a></p>
+
+    <script>
+      function createTable() {
+        const existingTable = document.querySelector("table")
+
+        if (existingTable) {
+          existingTable.remove()
+        }
+        const colNum = parseInt(document.getElementById("scoreAmount").value)
+        const table = document.createElement("table")
+        for (let i = 0; i < colNum; i++) {
+          const tr = document.createElement("tr")
+          const inp = document.createElement("input")
+          inp.setAttribute("type", "number")
+          inp.className = "score"
+          tr.append(inp)
+          table.append(tr)
+        }
+        const div = document.getElementsByClassName("hr")
+        div[0].append(table)
+      }
+      function getAverageScore() {
+        const scoreList = document.getElementsByClassName("score")
+        let sum = 0
+        for (let i = 0; i < scoreList.length; i++) {
+          sum += parseInt(scoreList[i].value)
+        }
+        let average = sum / scoreList.length
+        document.getElementById("averageScore").innerText = average.toFixed(1)
+      }
+      window.onload = function () {
+        document.getElementById("getTable").onclick = createTable
+        document.getElementById("getSum").onclick = getAverageScore
+      }
+    </script>
+  </body>
+</html>

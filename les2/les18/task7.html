@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <p>Оберіть транспортний засіб</p>
+        <select id="transportPrice">
+          <option value="800">Авто</option>
+          <option value="500">Автобус</option>
+          <option value="3000">Літак</option>
+        </select>
+      </div>
+      <div>
+        <p>Оберіть харчування</p>
+
+        <input type="checkbox" value="100" class="mealPrice" />Сніданок
+        <input type="checkbox" value="70" class="mealPrice" />Обід
+        <input type="checkbox" value="150" class="mealPrice" />Вечеря
+      </div>
+      <div>
+        <p>Оберіть гіда</p>
+
+        <input type="radio" name="1" value="700" class="guidePrice" />Гід Олеся
+        <input type="radio" name="1" value="100" class="guidePrice" />Гід Василь
+        <input type="radio" name="1" value="2000" class="guidePrice" />Гід
+        Наталья
+      </div>
+      <button id="totalPrice">Розрахувати вартість</button>
+      <p>Загальна вартість: <span id="total"></span></p>
+    </div>
+    <p><a href="./lesson18.html">Назад</a></p>
+
+    <script>
+      function getTotalPrice() {
+        const transportPrice = parseFloat(
+          document.getElementById("transportPrice").value
+        )
+        const mealList = document.getElementsByClassName("mealPrice")
+        let mealPrice = 0
+        for (let i = 0; i < mealList.length; i++) {
+          mealPrice = mealList[i].checked
+            ? (mealPrice += parseFloat(mealList[i].value))
+            : mealPrice
+        }
+        const guideList = document.getElementsByClassName("guidePrice")
+        let guidePrice = 0
+        for (let i = 0; i < guideList.length; i++) {
+          guidePrice = guideList[i].checked
+            ? (guidePrice = parseFloat(guideList[i].value))
+            : guidePrice
+        }
+        let totalPrice = transportPrice + mealPrice + guidePrice
+        document.getElementById("total").innerText = totalPrice.toFixed(2)
+      }
+      window.onload = function () {
+        document.getElementById("totalPrice").onclick = getTotalPrice
+      }
+    </script>
+  </body>
+</html>

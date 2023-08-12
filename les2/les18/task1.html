@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="task1.css" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="firstNum">
+        <label
+          >First number
+          <input type="number" id="firstNum" value="0" />
+        </label>
+      </div>
+      <div class="secondNum">
+        <label
+          >Second number
+          <input type="number" id="secondNum" value="0" />
+        </label>
+      </div>
+      <div>
+        <button type="button" class="btn btn-outline-primary" id="add">
+          Add
+        </button>
+        <button type="button" class="btn btn-outline-success" id="subtract">
+          Subtract
+        </button>
+        <button type="button" class="btn btn btn-outline-danger" id="multiply">
+          Multiply
+        </button>
+        <button type="button" class="btn btn-outline-secondary" id="divide">
+          Divide
+        </button>
+      </div>
+      <div>
+        <p>
+          <b>Result = <span id="res"></span></b>
+        </p>
+      </div>
+    </div>
+    <p><a href="./lesson18.html">Назад</a></p>
+
+    <script>
+      //перший код з повторенням функцій
+      // function getAddResult() {
+      //   const firstNum = parseFloat(document.getElementById("firstNum").value)
+      //   const secondNum = parseFloat(document.getElementById("secondNum").value)
+      //   let res = firstNum + secondNum
+      //   document.getElementById("res").innerText = res
+      // }
+      // function getSubtractResult() {
+      //   const firstNum = parseFloat(document.getElementById("firstNum").value)
+      //   const secondNum = parseFloat(document.getElementById("secondNum").value)
+      //   let res = firstNum - secondNum
+      //   document.getElementById("res").innerText = res
+      // }
+      // function getMultiplyResult() {
+      //   const firstNum = parseFloat(document.getElementById("firstNum").value)
+      //   const secondNum = parseFloat(document.getElementById("secondNum").value)
+      //   let res = firstNum * secondNum
+      //   document.getElementById("res").innerText = res
+      // }
+      // function getDivideResult() {
+      //   const firstNum = parseFloat(document.getElementById("firstNum").value)
+      //   const secondNum = parseFloat(document.getElementById("secondNum").value)
+      //   let res = firstNum / secondNum
+      //   document.getElementById("res").innerText = res
+      // }
+
+      //другий оптимізований код
+      function getCalculations(operator) {
+        const firstNum = parseFloat(document.getElementById("firstNum").value)
+        const secondNum = parseFloat(document.getElementById("secondNum").value)
+        let res
+
+        switch (operator) {
+          case "plus":
+            res = firstNum + secondNum
+            break
+
+          case "minus":
+            res = firstNum - secondNum
+            break
+
+          case "multiplication":
+            res = firstNum * secondNum
+            break
+
+          case "division":
+            res = firstNum / secondNum
+            break
+          default:
+            break
+        }
+        document.getElementById("res").innerText = res
+      }
+
+      window.onload = function () {
+        document.getElementById("add").onclick = function () {
+          getCalculations("plus")
+        }
+        document.getElementById("subtract").onclick = function () {
+          getCalculations("minus")
+        }
+        document.getElementById("multiply").onclick = function () {
+          getCalculations("multiplication")
+        }
+        document.getElementById("divide").onclick = function () {
+          getCalculations("division")
+        }
+      }
+    </script>
+  </body>
+</html>

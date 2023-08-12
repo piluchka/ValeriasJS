@@ -1,0 +1,13 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.firstNum {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.secondNum {
+  padding-bottom: 10px;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label>
+      Enter amount of rows
+      <input type="number" id="rowNum" />
+    </label>
+    <label>
+      Enter amount of columns
+      <input type="number" id="columnNum" />
+    </label>
+    <button id="gen">Generate</button>
+    <p><a href="./lesson18.html">Назад</a></p>
+
+    <script>
+      function getTable() {
+        const existingTable = document.querySelector("table")
+        if (existingTable) {
+          existingTable.remove()
+        }
+        const rowNum = parseInt(document.getElementById("rowNum").value)
+        const columnNum = parseInt(document.getElementById("columnNum").value)
+        console.log(rowNum)
+        const table = document.createElement("table")
+        let num = 1
+        for (let i = 0; i < rowNum; i++) {
+          const row = document.createElement("tr")
+          row.style.border = "2px solid black"
+          for (let j = 0; j < columnNum; j++) {
+            const column = document.createElement("td")
+            column.style.border = "2px solid black"
+            column.innerText = num++
+            row.append(column)
+          }
+          table.append(row)
+        }
+        table.style.border = "2px solid black"
+        document.body.append(table)
+      }
+      window.onload = function () {
+        document.getElementById("gen").onclick = getTable
+      }
+    </script>
+  </body>
+</html>

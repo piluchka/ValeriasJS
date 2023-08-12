@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yay</title>
+  </head>
+  <body>
+    <script>
+      let wishList = [
+        "Fly to the space",
+        "Eat a steak",
+        "Buy a dog",
+        "Create art",
+        "Fall in love",
+        "See the ocean",
+        "Travel the world",
+        "Get a car",
+        "Buy a house",
+        "See her again...",
+      ]
+      function getRandomWishes(wishList) {
+        for (let i = 0; i < 3; i++) {
+          const div = document.createElement("div")
+          const randIndex = Math.floor(Math.random() * wishList.length)
+          div.innerText = wishList[randIndex]
+          div.style.width = "150px"
+          div.style.border = "2px solid black"
+          document.body.append(div)
+        }
+      }
+      window.onload = function () {
+        getRandomWishes(wishList)
+      }
+    </script>
+    <p><a href="./lesson18.html">Назад</a></p>
+  </body>
+</html>

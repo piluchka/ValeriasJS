@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"></script>
+    <title>Age Calculate</title>
+  </head>
+  <body>
+    <div>
+      <div>
+        <label>
+          Enter the year of your birth
+          <input type="number" id="yearOfBirth" />
+        </label>
+      </div>
+      <button id="calc" class="btn btn-primary">Calculate your age</button>
+      <p>
+        Your age is <strong><span id="age"></span></strong>
+      </p>
+    </div>
+    <p><a href="./lesson18.html">Назад</a></p>
+
+    <script>
+      function ageCalculating() {
+        const yearOfBirth = parseInt(
+          document.getElementById("yearOfBirth").value
+        )
+        const currentYear = 2023
+        let res = currentYear - yearOfBirth
+        document.getElementById("age").innerText = res
+      }
+      window.onload = function () {
+        document.getElementById("calc").onclick = ageCalculating
+      }
+    </script>
+  </body>
+</html>
