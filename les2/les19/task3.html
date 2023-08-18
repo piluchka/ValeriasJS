@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3</title>
+  </head>
+  <body>
+    <p><a href="./lesson19.html">Назад</a></p>
+    <script>
+      class Tables {
+        constructor(tablesNum) {
+          this.tablesNum = tablesNum
+          this.clicks = 0
+        }
+        getRandNum(min, max) {
+          return min + Math.floor(Math.random() * (max - min) + 1)
+        }
+        changeBorder() {
+          const curTable = this
+          curTable.style.border = "2px solid red"
+          const curCaption = curTable.previousElementSibling
+          let amountOfClicks = parseInt(curCaption.getAttribute("clicks"))
+          amountOfClicks++
+          curCaption.setAttribute("clicks", amountOfClicks)
+          curCaption.innerText = ` Table${curTable.getAttribute(
+            "num"
+          )} Clicks: ${amountOfClicks} `
+        }
+        render() {
+          for (let i = 1; i <= this.tablesNum; i++) {
+            const table = document.createElement("table")
+            table.setAttribute("num", i)
+            table.style.border = "2px solid black"
+            const caption = document.createElement("captions")
+            caption.setAttribute("clicks", 0)
+            caption.innerText = "Table" + i
+            for (let j = 0; j < 3; j++) {
+              const tr = document.createElement("tr")
+              tr.style.border = "2px solid black"
+
+              for (let k = 0; k < 3; k++) {
+                const td = document.createElement("td")
+                td.style.border = "2px solid black"
+
+                td.innerText = this.getRandNum(1, 100)
+                tr.append(td)
+              }
+              table.append(tr)
+            }
+            document.body.append(caption)
+            document.body.append(table)
+          }
+          const tableList = document.querySelectorAll("table")
+          for (const table of tableList) {
+            const tdList = table.querySelectorAll("td")
+            for (const td of tdList) {
+              td.onclick = this.changeBorder.bind(table)
+            }
+          }
+        }
+      }
+
+      let a = new Tables(3)
+      a.render()
+    </script>
+  </body>
+</html>

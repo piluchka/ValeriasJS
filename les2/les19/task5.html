@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 5</title>
+    <style>
+      #containerSelector {
+        display: flex;
+      }
+      .buttonSelect {
+        width: 40px;
+        height: 40px;
+        background-image: url("https://e7.pngegg.com/pngimages/931/615/png-clipart-green-arrow-computer-icons-arrow-angle-rectangle.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+      .buttonUnselect {
+        width: 40px;
+        height: 40px;
+        background-image: url("data:image/jpeg;base64,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"); /* Укажите путь к вашему изображению */
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+      .ulListAll {
+        border: 2px solid black;
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+      }
+      .ulListSelected {
+        border: 2px solid black;
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        margin-left: 100px;
+      }
+      .liAll {
+        display: flex;
+        justify-content: space-between;
+        border: 2px solid black;
+        font-size: 20px;
+      }
+      .liSelect {
+        display: flex;
+        justify-content: space-between;
+        border: 2px solid black;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <p><a href="./lesson19.html">Назад</a></p>
+
+    <div id="containerSelector"></div>
+
+    <script>
+      let players = [
+        { name: "John", surname: "Bon" },
+        { name: "Kitty", surname: "Benks" },
+        { name: "Rollie", surname: "Awage" },
+        { name: "Susan", surname: "Row" },
+        { name: "Don", surname: "Palarsky" },
+        { name: "Den", surname: "Aflik" },
+        { name: "Ronnie", surname: "Lotis" },
+        { name: "Ken", surname: "Justis" },
+      ]
+      class PlayersLists {
+        constructor(allPlayersList) {
+          this.allPlayersList = allPlayersList
+        }
+        movePlayer(event) {
+          const clickedButton = event.target
+          const parentLi = clickedButton.parentElement
+          parentLi.lastChild.classList.toggle("buttonUnselect")
+          parentLi.lastChild.onclick = this.movePlayerBack.bind(this)
+          this.ulSelectedPlayers.append(parentLi)
+        }
+        movePlayerBack(event) {
+          const clickedButton = event.target
+          const parentLi = clickedButton.parentElement
+          parentLi.lastChild.classList.toggle("buttonUnselect")
+          this.ulPlayers.append(parentLi)
+          parentLi.lastChild.onclick = this.movePlayer.bind(this)
+        }
+        render(containerSelector) {
+          //All players list
+          this.ulPlayers = document.createElement("ul")
+          this.ulPlayers.className = "ulListAll"
+          document.querySelector(containerSelector).append(this.ulPlayers)
+
+          //Players(li)
+          for (let i = 0; i < this.allPlayersList.length; i++) {
+            const li = document.createElement("li")
+            li.className = "liAll"
+            li.innerText = `${this.allPlayersList[i].name} ${this.allPlayersList[i].surname}`
+            this.ulPlayers.append(li)
+            //button arrow
+            const button = document.createElement("button")
+            button.className = "buttonSelect"
+            li.append(button)
+          }
+          //Selected players list
+          this.ulSelectedPlayers = document.createElement("ul")
+          this.ulSelectedPlayers.className = "ulListSelected"
+          document
+            .querySelector(containerSelector)
+            .append(this.ulSelectedPlayers)
+
+          //button onclick #1
+          const buttonSelect = document.getElementsByClassName("buttonSelect")
+          for (const button of buttonSelect) {
+            button.onclick = this.movePlayer.bind(this)
+          }
+          //button onclick #2
+          const buttonUnselect =
+            document.getElementsByClassName("buttonUnselect")
+          for (const button of buttonUnselect) {
+            button.onclick = this.movePlayerBack.bind(this)
+          }
+        }
+      }
+      let a = new PlayersLists(players)
+      a.render("#containerSelector")
+    </script>
+  </body>
+</html>

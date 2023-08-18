@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+      }
+      .labelInput {
+        display: flex;
+        flex-direction: row;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      class Inputs {
+        constructor(title, inputNum) {
+          this.title = title
+          this.inputNum = inputNum
+        }
+        getValues() {
+          let startEl = this
+          let startInp = startEl.lastChild
+          let startValue = parseFloat(startEl.lastChild.value)
+          let index = 0
+          let prevItem = startEl
+          while (prevItem.previousElementSibling) {
+            prevItem = prevItem.previousElementSibling
+            index += 1
+            prevItem.lastChild.value = startValue - index
+          }
+          index = 0
+          let nextItem = startEl
+          while (nextItem.nextElementSibling) {
+            nextItem = nextItem.nextElementSibling
+            index++
+            nextItem.lastChild.value = startValue + index
+          }
+        }
+        render() {
+          const divContainer = document.createElement("div")
+          divContainer.className = "container"
+          for (let i = 1; i <= this.inputNum; i++) {
+            const label = document.createElement("label")
+            label.className = "labelInput"
+            label.innerText = this.title + i
+            const inp = document.createElement("input")
+            inp.setAttribute("type", "number")
+            label.append(inp)
+            divContainer.append(label)
+          }
+          document.body.append(divContainer)
+          let labelList = document.querySelectorAll("label")
+          for (const label of labelList) {
+            label.lastChild.oninput = this.getValues.bind(label)
+          }
+        }
+      }
+      window.onload = function () {
+        let a = new Inputs("value", 5)
+        a.render()
+      }
+    </script>
+    <p><a href="./lesson19.html">Назад</a></p>
+  </body>
+</html>

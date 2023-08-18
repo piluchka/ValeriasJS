@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2</title>
+  </head>
+  <body>
+    <p><a href="./lesson19.html">Назад</a></p>
+    <script>
+      class RandomOrderedLists {
+        constructor(listsAmount) {
+          this.listsAmount = listsAmount
+        }
+        getRandNum(min, max) {
+          return min + Math.floor(Math.random() * (max - min) + 1)
+        }
+        colorElements() {
+          const olList = document.querySelectorAll("ol")
+          for (const ol of olList) {
+            if (ol.children.length % 2 === 0) {
+              ol.style.backgroundColor = "green"
+            } else {
+              ol.style.backgroundColor = "red"
+            }
+          }
+        }
+        render() {
+          for (let i = 0; i < this.listsAmount; i++) {
+            const ol = document.createElement("ol")
+            const randAmountOfLi = this.getRandNum(1, 10)
+            for (let j = 0; j < randAmountOfLi; j++) {
+              const li = document.createElement("li")
+              li.innerText = this.getRandNum(1, 100)
+              ol.append(li)
+            }
+            document.body.append(ol)
+          }
+          const button = document.createElement("button")
+          button.innerText = "Color odd and even lists"
+          document.body.append(button)
+          button.onclick = this.colorElements
+        }
+      }
+
+      let a = new RandomOrderedLists(5)
+      a.render()
+    </script>
+  </body>
+</html>
