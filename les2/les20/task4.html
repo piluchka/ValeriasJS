@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 4</title>
+    <style>
+      #containerSelector {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      p {
+        font-size: 30px;
+      }
+      .back {
+        position: absolute;
+        top: 13%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="containerSelector"></div>
+    <script>
+      class CrazyInputsAndButtons {
+        constructor(inputsNum, buttonsNum) {
+          this.inputsNum = inputsNum
+          this.buttonsNum = buttonsNum
+          this.inputClicks = 0
+          this.buttonClicks = 0
+        }
+        getRandNum(min, max) {
+          return min + Math.floor(Math.random() * (max - min))
+        }
+        countInputsClicks(event) {
+          if (event.target.tagName === "INPUT") {
+            this.inputClicks += 1
+            let p = document.getElementById("forInput")
+            p.innerText = `Input clicks: ${this.inputClicks}`
+          }
+        }
+        countButtonsClicks(event) {
+          if (event.target.tagName === "BUTTON") {
+            this.buttonClicks += 1
+            let p = document.getElementById("forButtons")
+            p.innerText = `Button clicks: ${this.buttonClicks}`
+          }
+        }
+        render(containerSelector) {
+          let container = document.querySelector(containerSelector)
+
+          for (let i = 0; i < this.inputsNum; i++) {
+            const input = document.createElement("input")
+            input.setAttribute("type", "text")
+            input.style.position = "absolute"
+            input.style.top =
+              this.getRandNum(0, window.innerHeight - 200) + "px"
+            input.style.left =
+              this.getRandNum(0, window.innerWidth - 200) + "px"
+            container.append(input)
+          }
+          for (let j = 0; j < this.buttonsNum; j++) {
+            const button = document.createElement("button")
+            button.innerText = "click me!"
+            button.style.position = "absolute"
+            button.style.top =
+              this.getRandNum(0, window.innerHeight - 200) + "px"
+            button.style.left =
+              this.getRandNum(0, window.innerWidth - 200) + "px"
+            document.querySelector(containerSelector).append(button)
+          }
+          let textClicksForInput = document.createElement("p")
+          textClicksForInput.id = "forInput"
+          textClicksForInput.innerText = "Input clicks: 0"
+          let textClicksForButtons = document.createElement("p")
+          textClicksForButtons.id = "forButtons"
+          textClicksForButtons.innerText = "Button clicks: 0"
+
+          container.append(textClicksForInput)
+          container.append(textClicksForButtons)
+
+          container.addEventListener("click", this.countInputsClicks.bind(this))
+          container.addEventListener(
+            "click",
+            this.countButtonsClicks.bind(this)
+          )
+        }
+      }
+
+      let a = new CrazyInputsAndButtons(5, 5)
+      a.render("#containerSelector")
+    </script>
+    <p class="back"><a href="./lesson20.html">Назад</a></p>
+  </body>
+</html>

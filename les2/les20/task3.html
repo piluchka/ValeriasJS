@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3</title>
+    <style>
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      form input {
+        margin-bottom: 10px;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      class UserForm {
+        constructor(propsNames) {
+          this.propsNames = propsNames
+        }
+        setValue(event) {
+          if (event.target.tagName === "INPUT") {
+            event.target.value = "0"
+          }
+        }
+        render() {
+          const form = document.createElement("form")
+
+          for (let i = 0; i < 7; i++) {
+            let input = document.createElement("input")
+            input.setAttribute("type", "number")
+            input.setAttribute("placeholder", this.propsNames[i])
+            form.append(input)
+          }
+          this.form = form
+          document.body.append(this.form)
+
+          this.form.onclick = this.setValue.bind(this)
+        }
+      }
+
+      let propsNames = [
+        "age",
+        "height",
+        "weight",
+        "salary",
+        "work experience",
+        "department number",
+        "serial number",
+      ]
+      let a = new UserForm(propsNames)
+      a.render()
+    </script>
+    <p><a href="./lesson20.html">Назад</a></p>
+  </body>
+</html>

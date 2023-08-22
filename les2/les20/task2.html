@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2</title>
+    <style>
+      img {
+        width: 200px;
+        height: 150px;
+      }
+      .main {
+        position: absolute;
+        width: 200px;
+        height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      class Bayraktar {
+        constructor(tankImgLink, tankDestroyedImgLink) {
+          this.tankImgLink = tankImgLink
+          this.tankDestroyedImgLink = tankDestroyedImgLink
+        }
+        getRandNum(min, max) {
+          return min + Math.floor(Math.random() * (max - min))
+        }
+        destroyTankAndRemove() {
+          this.img.setAttribute("src", this.tankDestroyedImgLink)
+          setTimeout(() => this.mainDiv.remove(), 300)
+        }
+        tankMove() {
+          this.intervalId = setInterval(() => {
+            this.mainDiv.style.top =
+              parseFloat(this.mainDiv.style.top) + 20 + "px"
+            if (
+              parseFloat(this.mainDiv.style.top) >=
+              window.innerHeight - 100
+            ) {
+              this.mainDiv.style.top = "0px"
+              clearInterval(this.intervalId)
+              this.tankMove()
+            }
+          }, 100)
+        }
+        render() {
+          const mainDiv = document.createElement("div")
+          mainDiv.className = "main"
+          mainDiv.style.top = "0px"
+          mainDiv.style.left =
+            this.getRandNum(0, window.innerWidth - 130) + "px"
+
+          const tankImg = document.createElement("img")
+          tankImg.setAttribute("src", this.tankImgLink)
+          this.img = tankImg
+          mainDiv.append(tankImg)
+
+          this.mainDiv = mainDiv
+          document.body.append(this.mainDiv)
+
+          tankImg.onclick = this.destroyTankAndRemove.bind(this)
+          this.tankMove()
+        }
+      }
+
+      for (let i = 0; i < 10; i++) {
+        let a = new Bayraktar("./tank.png", "./destroyedTank.png")
+        a.render()
+      }
+    </script>
+    <p><a href="./lesson20.html">Назад</a></p>
+  </body>
+</html>

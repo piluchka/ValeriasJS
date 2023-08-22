@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 5</title>
+  </head>
+  <body>
+    <div id="containerSelector"></div>
+    <script>
+      //Метод з одним класом
+
+      // class ListAndSearch {
+      //   constructor(list, title) {
+      //     this.list = list
+      //     this.title = title
+      //   }
+      //   searching() {
+      //     let searchingEl = this.input.value.toLocaleLowerCase()
+      //     const allEl = this.elList.children
+      //     for (const el of allEl) {
+      //       if (!el.innerText.toLowerCase().includes(searchingEl)) {
+      //         el.style.display = "none"
+      //       } else {
+      //         el.style.display = "block"
+      //       }
+      //     }
+      //   }
+      //   render(containerSelector) {
+      //     const label = document.createElement("label")
+      //     label.innerText = this.title + " "
+
+      //     const searchInput = document.createElement("input")
+      //     searchInput.setAttribute("type", "text")
+      //     searchInput.setAttribute("placeholder", "search")
+      //     this.input = searchInput
+      //     label.append(searchInput)
+
+      //     const list = document.createElement("ul")
+      //     list.className = "list"
+      //     this.elList = list
+
+      //     for (let i = 0; i < this.list.length; i++) {
+      //       const li = document.createElement("li")
+      //       li.innerText = this.list[i]
+      //       list.append(li)
+      //     }
+
+      //     document.querySelector(containerSelector).append(label)
+      //     document.querySelector(containerSelector).append(list)
+
+      //     searchInput.oninput = this.searching.bind(this)
+      //     this.searchInput = searchInput
+      //   }
+      // }
+
+      // let list = ["Gretta", "Sarah", "John", "Lera", "Julia", "Steven"]
+      // let a = new ListAndSearch(list, "Coworkers")
+      // a.render("#containerSelector")
+
+      //Метод з двома класами
+
+      class SearchingInput {
+        constructor(title) {
+          this.title = title
+        }
+        inputValue() {
+          const searchingValue = this.searchInput.value.toLowerCase()
+          const searchEvent = new CustomEvent("search", {
+            detail: searchingValue,
+          })
+          document.dispatchEvent(searchEvent)
+        }
+        render(containerSelector) {
+          const label = document.createElement("label")
+          label.innerText = this.title + " "
+
+          const searchInput = document.createElement("input")
+          searchInput.setAttribute("type", "text")
+          searchInput.setAttribute("placeholder", "search")
+          this.searchInput = searchInput
+          label.append(searchInput)
+
+          document.querySelector(containerSelector).append(label)
+
+          this.searchInput.addEventListener("input", this.inputValue.bind(this))
+        }
+      }
+
+      class List {
+        constructor(list) {
+          this.list = list
+        }
+        removeAndSearch(event) {
+          const value = event.detail
+          const liList = this.elList.children
+          for (const li of liList) {
+            if (!li.innerText.toLowerCase().includes(value)) {
+              li.style.display = "none"
+            } else {
+              li.style.display = "block"
+            }
+          }
+        }
+        render(containerSelector) {
+          const ul = document.createElement("ul")
+
+          for (let i = 0; i < this.list.length; i++) {
+            const li = document.createElement("li")
+            li.innerText = this.list[i]
+            ul.append(li)
+          }
+
+          document.querySelector(containerSelector).append(ul)
+          this.elList = ul
+
+          this.elList.addEventListener(
+            "search",
+            this.removeAndSearch.bind(this)
+          )
+        }
+      }
+
+      let a = new SearchingInput("Workers")
+      a.render("#containerSelector")
+
+      let b = new List([
+        "Sasha",
+        "Lera",
+        "Svan",
+        "Irina",
+        "Jora",
+        "Julia",
+        "Lena",
+        "Ken",
+        "John",
+        "Sarah",
+        "Col",
+      ])
+      b.render("#containerSelector")
+      document.addEventListener("search", (event) => {
+        b.removeAndSearch(event)
+      })
+    </script>
+    <p><a href="./lesson20.html">Назад</a></p>
+  </body>
+</html>
