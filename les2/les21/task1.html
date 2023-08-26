@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1-2</title>
+  </head>
+  <body>
+    <script>
+      class Client {
+        #ID
+        #moneyAmount
+        constructor(ID, moneyAmount, name) {
+          this.name = name
+          this.#ID = ID
+          this.#moneyAmount = moneyAmount
+        }
+
+        set ID(ID) {
+          if (typeof this.#ID === "undefined") {
+            this.#ID = ID
+          } else {
+            throw new Error("ID is already set")
+          }
+        }
+        get ID() {
+          return this.#ID
+        }
+        get MoneyAmount() {
+          return this.#moneyAmount
+        }
+        set MoneyAmount(amount) {
+          if (amount >= 0) {
+            this.#moneyAmount = amount
+          }
+        }
+
+        addMoney(moneyToAdd) {
+          this.#moneyAmount += moneyToAdd
+        }
+        withdrawMoney(moneyToWithdraw) {
+          if (this.#moneyAmount < moneyToWithdraw) {
+            throw new Error("Not enough money on your account")
+          } else {
+            this.#moneyAmount -= moneyToWithdraw
+          }
+        }
+        toString() {
+          return `${this.name}<br> YOUR ID: ${this.#ID}<br>Money amount: ${
+            this.#moneyAmount
+          }$`
+        }
+      }
+      let b = new Client(498245, 789, "Dave")
+      document.write(b)
+      document.write("<br>")
+      document.write("<br>")
+
+      class GoldenClient extends Client {
+        #percentsForUsingCreditMoney
+        constructor(
+          ID,
+          moneyAmount,
+          name,
+          creditMoneyLimit,
+          percentsForUsingCreditMoney
+        ) {
+          super(ID, moneyAmount, name)
+          this.creditMoneyLimit = creditMoneyLimit
+          this.#percentsForUsingCreditMoney = percentsForUsingCreditMoney
+          this.totalMoneyAmount = this.MoneyAmount + this.creditMoneyLimit
+        }
+        addMoney(moneyToAdd) {
+          super.addMoney(moneyToAdd)
+          this.totalMoneyAmount = this.MoneyAmount + this.creditMoneyLimit
+        }
+        withdrawMoney(moneyToWithdraw) {
+          if (this.MoneyAmount + this.creditMoneyLimit < moneyToWithdraw) {
+            throw new Error("Not enough money!")
+          } else if (
+            moneyToWithdraw > this.MoneyAmount &&
+            moneyToWithdraw - this.MoneyAmount < this.creditMoneyLimit
+          ) {
+            moneyToWithdraw -= this.MoneyAmount
+            this.MoneyAmount = 0
+            this.creditMoneyLimit -= moneyToWithdraw
+            this.totalMoneyAmount = this.MoneyAmount + this.creditMoneyLimit
+          } else {
+            this.MoneyAmount -= moneyToWithdraw
+            this.totalMoneyAmount = this.MoneyAmount + this.creditMoneyLimit
+          }
+        }
+        calculateInterest() {
+          const interest =
+            this.creditMoneyLimit * this.#percentsForUsingCreditMoney
+          return interest
+        }
+        toString() {
+          return `GOLDEN CLIENT -- ${super.toString()}<br> Credit money: ${
+            this.creditMoneyLimit
+          }$<br> TOTAL: ${
+            this.totalMoneyAmount
+          }$<br>Interest for using credit money: ${this.calculateInterest()}$ per month`
+        }
+      }
+      let a = new GoldenClient(2135543, 36281, "Alex", 5000, 0.05)
+      document.write(a)
+
+      let namesList = [
+        "Sarah",
+        "Jonh",
+        "Betty",
+        "Sam",
+        "Doroty",
+        "Kitty",
+        "Marnie",
+        "Dave",
+        "Shon",
+        "Rick",
+        "Sandy",
+        "Adam",
+        "Jeremy",
+        "Tusk",
+        "Nadya",
+        "Boris",
+        "Sasha",
+        "Lena",
+        "Tasha",
+        "Deni",
+      ]
+      function getClientsList(nameList, clientsAmount) {
+        let clientsList = []
+        const creditLimit = 5000
+        const creditPercent = 0.05
+
+        for (let i = 0; i < clientsAmount; i++) {
+          let randMoneyAmount = 1 + Math.floor(Math.random() * (100000 - 1))
+          let randNum = 1 + Math.floor(Math.random() * (3 - 1))
+          let randIndex = Math.floor(Math.random() * nameList.length)
+          if (randNum === 1) {
+            let client = new Client(
+              12345 + i,
+              randMoneyAmount,
+              nameList[randIndex]
+            )
+            clientsList.push(client)
+          } else if (randNum === 2) {
+            let client = new GoldenClient(
+              12345 + i,
+              randMoneyAmount,
+              nameList[randIndex],
+              creditLimit,
+              creditPercent
+            )
+            clientsList.push(client)
+          }
+        }
+        return clientsList
+      }
+
+      let clientsList = getClientsList(namesList, 50)
+
+      class Bank {
+        constructor(clientsList) {
+          this.clientsList = clientsList
+        }
+        showCommonClients() {
+          let ul = document.createElement("ul")
+          ul.innerText = "Common Clients List"
+          for (let i = 0; i < this.clientsList.length; i++) {
+            if (!("creditMoneyLimit" in this.clientsList[i])) {
+              let li = document.createElement("li")
+              li.innerText = this.clientsList[i].name
+              ul.append(li)
+            }
+          }
+          document.body.append(ul)
+        }
+        showGoldenClients() {
+          let ul = document.createElement("ul")
+          ul.innerText = "Golden Clients List"
+          for (let i = 0; i < this.clientsList.length; i++) {
+            if ("creditMoneyLimit" in this.clientsList[i]) {
+              let li = document.createElement("li")
+              li.innerText = this.clientsList[i].name
+              ul.append(li)
+            }
+          }
+          document.body.append(ul)
+        }
+        getTotalClientsMoney() {
+          let sum = 0
+          let p = document.createElement("p")
+          for (let i = 0; i < this.clientsList.length; i++) {
+            if ("creditMoneyLimit" in this.clientsList[i]) {
+              sum += this.clientsList[i].totalMoneyAmount
+            } else {
+              sum += this.clientsList[i].MoneyAmount
+            }
+          }
+          p.innerText = `Total sum of clients' money: ${sum}$`
+          document.body.append(p)
+        }
+      }
+
+      let m = new Bank(clientsList)
+      m.showCommonClients()
+      m.showGoldenClients()
+      m.getTotalClientsMoney()
+    </script>
+    <p><a href="./lesson21.html">Назад</a></p>
+  </body>
+</html>

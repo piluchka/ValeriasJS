@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3</title>
+    <style>
+      .img-container {
+        width: 300px;
+        height: auto; /* Автоматическая высота */
+        position: absolute;
+        transform-origin: bottom;
+      }
+
+      .img-container img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      class CoordinatedImg {
+        constructor(
+          coorX,
+          coorY,
+          imgSrc,
+          interval,
+          minCoorX,
+          maxCoorX,
+          minCoorY,
+          maxCoorY
+        ) {
+          this.coorX = coorX
+          this.coorY = coorY
+          this.imgSrc = imgSrc
+          this.interval = interval
+          this.minCoorX = minCoorX
+          this.maxCoorX = maxCoorX
+          this.minCoorY = minCoorY
+          this.maxCoorY = maxCoorY
+        }
+        getRandomNum(min, max) {
+          return min + Math.floor(Math.random() * (max - min))
+        }
+        render(containerSelector) {
+          const el = document.createElement("div")
+          el.className = "img-container"
+
+          const img = document.createElement("img")
+          img.setAttribute("src", this.imgSrc)
+          el.append(img)
+
+          document.querySelector(containerSelector).append(el)
+          this.el = el
+          this.img = img
+        }
+
+        changeElementCoordinates() {
+          setTimeout(() => {
+            this.coorX = this.getRandomNum(this.minCoorX, this.maxCoorX)
+            this.coorY = this.getRandomNum(this.minCoorY, this.maxCoorY)
+          }, this.interval)
+        }
+      }
+
+      class House extends CoordinatedImg {
+        constructor(
+          coorX,
+          coorY,
+          imgSrc,
+          interval,
+          minCoorX,
+          maxCoorX,
+          minCoorY,
+          maxCoorY
+        ) {
+          super(
+            coorX,
+            coorY,
+            imgSrc,
+            interval,
+            minCoorX,
+            maxCoorX,
+            minCoorY,
+            maxCoorY
+          )
+        }
+
+        render(containerSelector) {
+          super.render(containerSelector)
+          this.el.style.top = "300px"
+          this.el.style.left = "100px"
+          this.el.style.width = "300px"
+        }
+        changeElementCoordinates() {
+          super.changeElementCoordinates()
+          setTimeout(() => {
+            const currentWidth = parseInt(this.el.style.width)
+
+            let newWidth = currentWidth + this.coorX
+            this.el.style.width = newWidth + "px"
+          }, this.interval)
+        }
+      }
+
+      let house = new House(
+        300,
+        250,
+        "https://cdn.pnghd.pics/data/631/house-image-png-14.png",
+        2000,
+        -60,
+        400,
+        1,
+        4
+      )
+      console.log(house)
+      house.render("#container")
+      house.changeElementCoordinates()
+
+      class Dog extends CoordinatedImg {
+        constructor(
+          coorX,
+          coorY,
+          imgSrc,
+          interval,
+          minCoorX,
+          maxCoorX,
+          minCoorY,
+          maxCoorY
+        ) {
+          super(
+            coorX,
+            coorY,
+            imgSrc,
+            interval,
+            minCoorX,
+            maxCoorX,
+            minCoorY,
+            maxCoorY
+          )
+        }
+        render(containerSelector) {
+          super.render(containerSelector)
+          this.el.style.top = this.coorY + "px"
+          this.el.style.left = this.coorX + "px"
+        }
+        changeElementCoordinates() {
+          super.changeElementCoordinates()
+          setTimeout(() => {
+            this.el.style.left = this.coorX + "px"
+          }, this.interval)
+        }
+      }
+
+      let dog = new Dog(
+        300,
+        300,
+        "https://www.kindpng.com/picc/m/592-5923603_drawing-cartoon-sleeping-dog-hd-png-download.png",
+        2000,
+        50,
+        window.outerWidth - 400,
+        50,
+        window.outerHeight - 600
+      )
+      console.log(dog)
+      dog.render("#container")
+      dog.changeElementCoordinates()
+
+      class Bird extends CoordinatedImg {
+        constructor(
+          coorX,
+          coorY,
+          imgSrc,
+          interval,
+          minCoorX,
+          maxCoorX,
+          minCoorY,
+          maxCoorY
+        ) {
+          super(
+            coorX,
+            coorY,
+            imgSrc,
+            interval,
+            minCoorX,
+            maxCoorX,
+            minCoorY,
+            maxCoorY
+          )
+        }
+        render(containerSelector) {
+          super.render(containerSelector)
+          this.el.style.top = this.coorY
+          this.el.style.left = this.coorX
+        }
+        changeElementCoordinates() {
+          super.changeElementCoordinates()
+          setTimeout(() => {
+            this.el.style.left = this.coorX + "px"
+            this.el.style.top = this.coorY + "px"
+          }, this.interval)
+        }
+      }
+
+      let bird = new Bird(
+        200,
+        600,
+        "https://img.freepik.com/premium-photo/scarlet-macaw-parrot-flying-isolated-white-background_696838-984.jpg",
+        2000,
+        50,
+        window.outerWidth - 400,
+        50,
+        window.outerHeight - 600
+      )
+      bird.render("#container")
+      bird.changeElementCoordinates()
+    </script>
+    <p><a href="./lesson21.html">Назад</a></p>
+  </body>
+</html>

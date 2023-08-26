@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 4</title>
+  </head>
+  <body>
+    <form action="">
+      School month
+      <input type="text" id="month" />
+      Score
+      <input type="text" id="score" />
+      <button type="button">Check</button>
+    </form>
+    <p id="result"></p>
+    <script>
+      class IsNotANumberError extends Error {
+        constructor() {
+          super()
+          this.message = "A value should be a number."
+          this.name = "Not a number"
+        }
+      }
+
+      class IsInRangeError extends Error {
+        constructor() {
+          super()
+          this.message = "A value is not in range."
+          this.name = "Not in range"
+        }
+      }
+
+      class IsHolidayError extends Error {
+        constructor() {
+          super()
+          this.message = "It is a holiday"
+          this.name = "Holiday month"
+        }
+      }
+
+      function fixChecking() {
+        const month = parseInt(document.getElementById("month").value)
+        const score = parseInt(document.getElementById("score").value)
+        const result = document.getElementById("result")
+        try {
+          if (isNaN(month) || isNaN(score)) throw new IsNotANumberError()
+          if (month < 1 || month > 12) throw new IsInRangeError()
+          if (month >= 6 && month <= 8) throw new IsHolidayError()
+          if (score < 1 || score > 100) throw new IsInRangeError()
+          if (score <= 40 && month !== 1 && month !== 5) {
+            result.innerText = "A student is able to fix a score"
+          } else {
+            result.innerText =
+              "A student is not able to fix a score. The score is high enough or it's the last month of the semester."
+          }
+        } catch (error) {
+          if (error instanceof IsNotANumberError) {
+            result.innerText = error.message + "Please, enter a number."
+          }
+          if (error instanceof IsInRangeError) {
+            result.innerText =
+              error.message +
+              " Correct range for score: 1-100. Correct range for month: 1-12"
+          }
+          if (error instanceof IsHolidayError) {
+            result.innerText = error.message + " month"
+          }
+        }
+      }
+
+      document.querySelector("button").onclick = fixChecking
+    </script>
+    <p><a href="./lesson21.html">Назад</a></p>
+  </body>
+</html>
