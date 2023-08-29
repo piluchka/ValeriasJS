@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 10</title>
+  </head>
+  <body>
+    <script>
+      function getArrayWithRandomNums(min, max, elAmount) {
+        let arr = []
+
+        for (let i = 0; i < elAmount; i++) {
+          const randNum = min + Math.floor(Math.random() * (max - min))
+          arr.push(randNum)
+        }
+
+        return arr
+      }
+
+      function getInsertionSortTime(arrToSort) {
+        const startTime = new Date()
+
+        for (let k = 1; k < arrToSort.length; k++) {
+          const currEl = arrToSort[k]
+          let i = k - 1
+          while (i >= 0 && arrToSort[i] > currEl) {
+            arrToSort[i + 1] = arrToSort[i]
+            i = i - 1
+          }
+          arrToSort[i + 1] = currEl
+        }
+
+        const endTime = new Date()
+
+        return endTime.getTime() - startTime.getTime()
+      }
+
+      let arr = getArrayWithRandomNums(1, 800, 1000)
+      alert(`Insertion sorting has been done in ${getInsertionSortTime(arr)}ms`)
+
+      function getBubblingSortTime(arrToSort) {
+        const startTime = new Date()
+
+        let changed
+        do {
+          changed = false
+          for (let i = 1; i < arrToSort.length; i++) {
+            if (arrToSort[i - 1] > arrToSort[i]) {
+              let temp = arrToSort[i - 1]
+              arrToSort[i - 1] = arrToSort[i]
+              arrToSort[i] = temp
+              changed = true
+            }
+          }
+        } while (changed)
+
+        const endTime = new Date()
+
+        return endTime.getTime() - startTime.getTime()
+      }
+
+      let arr2 = getArrayWithRandomNums(1, 800, 1000)
+      alert(`Bubbling sorting has been done in ${getBubblingSortTime(arr2)}ms`)
+    </script>
+    <p><a href="./lesson22.html">Назад</a></p>
+  </body>
+</html>

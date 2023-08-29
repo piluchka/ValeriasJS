@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 7</title>
+  </head>
+  <body>
+    <script>
+      function getEndDateOfReturn(currDate, hoursOfCarRent) {
+        const endDate = new Date(
+          currDate.setHours(currDate.getHours() + hoursOfCarRent)
+        )
+        return `${endDate.getDate()}.${endDate.getMonth()}.${endDate.getFullYear()} -- Exact hours: ${endDate.getHours()}:${endDate.getMinutes()}`
+      }
+      document.write(
+        `You should return the car at ${getEndDateOfReturn(
+          new Date(),
+          parseInt(prompt("Enter hours of ranting"))
+        )}`
+      )
+    </script>
+    <p><a href="./lesson22.html">Назад</a></p>
+  </body>
+</html>

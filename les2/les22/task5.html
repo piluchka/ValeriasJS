@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 5</title>
+  </head>
+  <body>
+    <script>
+      const userDateofTheBirth = new Date(
+        prompt("Enter you b-day date in format: 1 January 2000")
+      )
+      let userCurrentAgeInMilli = new Date() - userDateofTheBirth
+
+      const ageDate = new Date(userCurrentAgeInMilli)
+      const userAgeInYears = ageDate.getFullYear() - 1970
+
+      alert(`You are ${userAgeInYears} yo`)
+    </script>
+    <p><a href="./lesson22.html">Назад</a></p>
+  </body>
+</html>

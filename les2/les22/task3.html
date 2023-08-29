@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3</title>
+  </head>
+  <body>
+    <script>
+      function getCurrentSeason(date) {
+        const currentMonth = date.getMonth()
+        let res
+        if (currentMonth === 12 || currentMonth === 1 || currentMonth === 2) {
+          res = "Now it is winter"
+        } else if (currentMonth >= 3 && currentMonth <= 5) {
+          res = "Now it is spring"
+        } else if (currentMonth >= 6 && currentMonth <= 8) {
+          res = "Now it is summer"
+        } else if (currentMonth >= 9 && currentMonth <= 11) {
+          res = "Now it is fall"
+        }
+        return res
+      }
+
+      let season = getCurrentSeason(new Date())
+      alert(season)
+    </script>
+    <p><a href="./lesson22.html">Назад</a></p>
+  </body>
+</html>

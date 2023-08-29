@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1</title>
+  </head>
+  <body>
+    <script>
+      function showHelloDependingOnTime(date) {
+        const currentHours = date.getHours()
+        if (currentHours >= 4 && currentHours <= 11) {
+          alert("Good morning!")
+        } else if (currentHours >= 12 && currentHours <= 17) {
+          alert("Good day!")
+        } else {
+          alert("Good evening!")
+        }
+      }
+
+      showHelloDependingOnTime(new Date())
+    </script>
+    <p><a href="./lesson22.html">Назад</a></p>
+  </body>
+</html>

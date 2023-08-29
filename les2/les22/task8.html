@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 8</title>
+  </head>
+  <body>
+    <script>
+      function getTimeOfSolving(min, max) {
+        const firstRandNum = min + Math.floor(Math.random() * (max - min))
+        const secondRandNum = min + Math.floor(Math.random() * (max - min))
+        const currentDate = new Date()
+        let answer = parseInt(
+          prompt(`What is ${firstRandNum} + ${secondRandNum}?`)
+        )
+        const finalDate = new Date()
+        let timeOfSolving = finalDate.getSeconds() - currentDate.getSeconds()
+
+        if (answer === firstRandNum + secondRandNum) alert("You are right!")
+        else alert("You are wrong")
+
+        return timeOfSolving
+      }
+
+      let a = getTimeOfSolving(1, 10)
+      alert(`You solved this math example for ${a}sec`)
+    </script>
+    <p><a href="./lesson22.html">Назад</a></p>
+  </body>
+</html>

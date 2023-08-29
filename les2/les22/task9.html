@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 9</title>
+  </head>
+  <body>
+    <script>
+      function getIsItemExpired(year, month, day, validityDays) {
+        const currDate = new Date()
+        const prodDate = new Date(year, month - 1, day)
+        const expireDate = new Date(
+          prodDate.setDate(prodDate.getDate() + validityDays)
+        )
+        let res
+        if (currDate <= expireDate) {
+          res = `It's not expired`
+        } else {
+          res = `It's expired`
+        }
+
+        return res
+      }
+
+      alert(getIsItemExpired(2023, 8, 11, 30))
+    </script>
+    <p><a href="./lesson22.html">Назад</a></p>
+  </body>
+</html>
