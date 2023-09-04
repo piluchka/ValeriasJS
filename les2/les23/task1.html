@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All tasks</title>
+  </head>
+  <body>
+    <script>
+      // Задача 1. Дано масив рядків. Вивести ті, у яких є цифри (використати метод test та регулярні вирази).
+      console.log("Задача 1")
+      const strings = [
+        "Abc",
+        "abc322",
+        "78bc",
+        "c",
+        "abyss",
+        "8615",
+        "fuue 890 1 dp",
+        "bnfiu idoj",
+      ]
+      const numbersExp = /\d/
+      for (let i = 0; i < strings.length; i++) {
+        if (numbersExp.test(strings[i])) {
+          console.log(strings[i])
+        }
+      }
+
+      // Задача 2. Дано масив рядків. Вивести ті, у яких немає цифр.
+      console.log(" ")
+      console.log("Задача 2")
+      const notNumbersExp = /^\D*$/
+      for (let i = 0; i < strings.length; i++) {
+        if (notNumbersExp.test(strings[i])) {
+          console.log(strings[i])
+        }
+      }
+
+      // Задача 3. Дано масив рядків. Вивести ті, у яких є голосні літери.
+      console.log(" ")
+      console.log("Задача 3")
+      const vowelsExp = /[aeiou]/
+      for (let i = 0; i < strings.length; i++) {
+        if (vowelsExp.test(strings[i])) {
+          console.log(strings[i])
+        }
+      }
+
+      // Задача 4. Дано масив рядків. Вивести ті, у яких немає голосних літер.
+      console.log(" ")
+      console.log("Задача 4")
+      const noVowelsExp = /^[^aeiou]*$/i
+      for (let i = 0; i < strings.length; i++) {
+        if (noVowelsExp.test(strings[i])) {
+          console.log(strings[i])
+        }
+      }
+
+      // Задача 5. Дано масив рядків. Вивести ті, у яких є або цифра 1 або цифра 3.
+      console.log(" ")
+      console.log("Задача 5")
+      const onlyOneOrThreeNumExp = /(1|3).*/
+      for (let i = 0; i < strings.length; i++) {
+        if (onlyOneOrThreeNumExp.test(strings[i])) {
+          console.log(strings[i])
+        }
+      }
+
+      // Задача 6. Дано рядок тексту, вивести усі числа, які є у тексті.
+      console.log(" ")
+      console.log("Задача 6")
+      const text = "Hello. I am 22 yo. Wanna party? Text me: 34-23-11"
+      const numbersInTextExp = /\d+/g
+      const nums = text.match(numbersInTextExp)
+      nums.forEach((num) => console.log(num))
+
+      // Задача 7. Дано рядок тексту. Знайти усі знаки пунктуації, які були використано.
+      console.log(" ")
+      console.log("Задача 7")
+      const textTwo = "Hello! I am here: not there. Am I? (I am cat lol) ..."
+      const punctuationMarksExp = /[\p{P}]+/gu //Ще один варiант - /[\p{P}]+/gu
+      const punctuatoinMarks = textTwo.match(punctuationMarksExp)
+      punctuatoinMarks.forEach((mark) => console.log(mark))
+
+      // Задача 8. Дано рядок тексту. Вивести усі складові, які розділені розділовими знаками.
+      console.log(" ")
+      console.log("Задача 8")
+      const textThree =
+        "Cat, dog, parrot, pig. Nice animals for me: dog, rat, cock."
+      const splitedByPuncMarksExp = /\w+(?=[\p{P}])/gu
+      const splitedByPuncMarksWords = textThree.match(splitedByPuncMarksExp)
+      splitedByPuncMarksWords.forEach((word) => console.log(word))
+
+      // Задача 9. Дано рядок тексту. Перевірити, чи містить він дату у форматі dd.mm.yyyy (dd- день, mm- місяць, yyyy- рік).
+      console.log(" ")
+      console.log("Задача 9")
+      const dateText = "27.03.2001 I was born."
+      const dateTextTwo = "27/03/2001 I was born."
+      console.log(/\d{2}\.\d{1,2}\.\d{4}/.test(dateText))
+      console.log(/\d{2}\.\d{1,2}\.\d{4}/.test(dateTextTwo))
+
+      // Задача 10. Дано рядок тексту. Підрахувати кількість двоцифрових чисел у рядку.
+      console.log(" ")
+      console.log("Задача 10")
+      const numsStr = "12 4739 192, 38, 810, 283,48,19"
+      const twoDigitNumsExp = /\b\d{2}\b/g
+      const twoDigitNums = numsStr.match(twoDigitNumsExp)
+      console.log(twoDigitNums.length)
+
+      // Задача 11. Визначити чи може бути рядок тексту номером банківської картки (приклад: «4142-3433-2323-3434»). Знайти усі такі номери.
+      console.log(" ")
+      console.log("Задача 11")
+      const textFour =
+        "4142-3433-2323-3434 is my card. My mum's card is 4142-4981-2563-3834"
+      const cardNumExp = /\b\d{4}-\d{4}-\d{4}-\d{4}\b/g
+      textFour.match(cardNumExp).forEach((card) => console.log(card))
+
+      // Задача 12. Дано адресу сайту. Визначити, чи є він урядовим (містить домен “gov”)
+      console.log(" ")
+      console.log("Задача 12")
+      const siteLink = "https://www.abonentinfo.com/"
+      const siteLinkTwo = "https://diia.gov.ua/"
+      const govExp = /\bgov\b/
+      console.log(govExp.test(siteLinkTwo))
+      console.log(govExp.test(siteLink))
+
+      // Задача 13. Вибрати усі роки після 2021 року з отриманого повідомлення
+      console.log(" ")
+      console.log("Задача 13")
+      const yearText = "2019 2020 2021 2022 2023 2054 2095 years"
+      const yearExp = /20[2-9][2-9]/g
+      yearText.match(yearExp).forEach((year) => console.log(year))
+
+      // Задача 14. Дано номер телефону. Перевірити, чи є цей телефон телефоном з України (починаєтсья на «+38»)
+      console.log(" ")
+      console.log("Задача 14")
+      const phoneNumber = "+380969816320"
+      const phoneNumberTwo = "+999457820634"
+      const ukrainianPhoneNumber = /^\+380/g
+      console.log(ukrainianPhoneNumber.test(phoneNumber))
+      console.log(ukrainianPhoneNumber.test(phoneNumberTwo))
+
+      // Задача 15. Користувач вводить прізвище та ім’я в одному рядку через пробіл.  Замінити пробіл на дефіс.
+      console.log(" ")
+      console.log("Задача 15")
+      const userName = "Vitaliy Naka"
+      console.log(userName.replace(/\s/, "-"))
+
+      // Задача 16. Користувач вводить дату у форматі «день.місяць.рік». Отримати рядкове представлення дати у форматі «день/місяць/рік»
+      console.log(" ")
+      console.log("Задача 16")
+      const userDate = "30.8.23"
+      console.log(userDate.replace(/\./g, "/"))
+
+      // Задача 17. Користувач вводить день (номер дня (0-6) або «sun,mon,tue,wed,thu,fri,sat»). Визначити, чи  є це день вихідним
+      console.log(" ")
+      console.log("Задача 17")
+      let day = "6"
+      if (/sun/.test(day) || /sat/.test(day) || day === "0" || day === "6") {
+        console.log("It's weekend")
+      } else {
+        console.log("It's working day")
+      }
+    </script>
+    <p><a href="./lesson23.html">Назад</a></p>
+  </body>
+</html>
