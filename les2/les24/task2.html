@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Task 2</title>
+</head>
+
+<body>
+   <script>
+      // Задача 6.  Дано масив книг (назва, рік видання, автор). Підрахувати кількість книг для кожного автора.
+      const booksList = [
+         { title: "Fusion", year: 2009, author: "Emily Parker" },
+         { title: "The Art of Second Chances", year: 2000, author: "Michael Davis" },
+         { title: "Embers of Hope", year: 1966, author: "Mia Robinson" },
+         { title: "Chronicles of a Dreamer", year: 2003, author: "Michael Davis" },
+         { title: "Secrets of the Silver Lake", year: 1856, author: "Ava Anderson" },
+         { title: "Voices from Beyond", year: 1888, author: "Ava Anderson" },
+         { title: "Whispers of the Moon", year: 1999, author: "Emily Parker" },
+         { title: "The Glass Palace", year: 1980, author: "Ethan Clark" },
+         {
+            title: "Tales from the Enchanted Isles",
+            year: 1960,
+            author: "Ethan Clark",
+         },
+         { title: "The Stolen Crown", year: 1945, author: "Mia Robinson" },
+         { title: "Midnight Serenade", year: 2011, author: "Emily Parker" },
+         { title: "The Lost Heirloom", year: 2023, author: "Emily Parker" },
+         { title: "Waves of Destiny", year: 2011, author: "Samuel Johnson" },
+         { title: "The Enchanted Forest", year: 2005, author: "Samuel Johnson" },
+         { title: "Shadows of the Past", year: 1993, author: "Michael Davis" },
+         { title: "The Forgotten Chronicles", year: 1974, author: "Emma Taylor" },
+         { title: "A Song of Stardust", year: 1965, author: "Emma Taylor" },
+         { title: "Waves of Destiny", year: 1973, author: "Ethan Clark" },
+         { title: "The Lost Heirloom", year: 1955, author: "Isabella Lee" },
+         { title: "Whispers in the Wind", year: 2023, author: "Samuel Johnson" },
+      ]
+
+      const authorsMap = new Map()
+
+      for (const book of booksList) {
+         authorsMap.set(book.author, (authorsMap.get(book.author) ?? 0) + 1)
+      }
+
+
+      const container = document.createElement("div")
+      document.body.append(container)
+
+      authorsMap.forEach((amountOfBooks, author) => {
+         let p = document.createElement("p")
+         let booksStr = amountOfBooks > 1 ? "books" : "book"
+         p.innerText = `${author} has ${amountOfBooks} ${booksStr}`
+         container.append(p)
+      })
+
+   </script>
+   <a href="lesson24.html">Назад</a>
+</body>
+
+</html>

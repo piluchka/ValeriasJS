@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Task 3</title>
+</head>
+
+<body>
+   <script>
+      // Задача 7. Дано інформацію про відвідувачів деякого сайту (для кожного відвідувача зберігається логін). Підрахувати для кожного клієнта кількість відвідувань.
+      const usersBeenOnSiteList = [
+         { login: "hoj" },
+         { login: "upeth34" },
+         { login: "providate" },
+         { login: "falleccestor11" },
+         { login: "fireh0o0rse" },
+         { login: "calhams-1" },
+         { login: "strastip" },
+         { login: "puffal0pe" },
+         { login: "heavinted1990" },
+         { login: "heavinted1990" },
+         { login: "falleccestor11" },
+         { login: "falleccestor11" },
+         { login: "hoj" },
+         { login: "fireh0o0rse" },
+         { login: "upeth34" },
+         { login: "upeth34" },
+         { login: "upeth34" },
+         { login: "calhams-1" },
+         { login: "upeth34" },
+         { login: "hoj" },
+         { login: "hoj" },
+         { login: "heavinted1990" },
+         { login: "heavinted1990" },
+         { login: "upeth34" },
+         { login: "puffal0pe" },
+         { login: "puffal0pe" },
+         { login: "falleccestor11" },
+         { login: "falleccestor11" },
+         { login: "falleccestor11" },
+         { login: "falleccestor11" },
+         { login: "falleccestor11" },
+         { login: "falleccestor11" },
+         { login: "heavinted1990" },
+         { login: "heavinted1990" },
+         { login: "heavinted1990" },
+         { login: "strastip" },
+         { login: "puffal0pe" },
+         { login: "calhams-1" },
+         { login: "calhams-1" },
+         { login: "providate" },
+         { login: "providate" },
+         { login: "providate" },
+         { login: "providate" },
+         { login: "providate" },
+         { login: "providate" },
+         { login: "fireh0o0rse" },
+         { login: "upeth34" },
+         { login: "upeth34" },
+         { login: "upeth34" },
+         { login: "calhams-1" },
+         { login: "upeth34" },
+         { login: "hoj" },
+         { login: "hoj" },
+         { login: "heavinted1990" },
+         { login: "heavinted1990" },
+         { login: "upeth34" },
+         { login: "puffal0pe" },
+         { login: "fireh0o0rse" },
+         { login: "upeth34" },
+         { login: "upeth34" },
+         { login: "upeth34" },
+         { login: "calhams-1" },
+         { login: "upeth34" },
+         { login: "hoj" },
+         { login: "hoj" },
+         { login: "heavinted1990" },
+         { login: "heavinted1990" },
+         { login: "upeth34" },
+         { login: "puffal0pe" },
+         { login: "fireh0o0rse" },
+         { login: "upeth34" },
+         { login: "upeth34" },
+         { login: "upeth34" },
+         { login: "calhams-1" },
+         { login: "upeth34" },
+         { login: "hoj" },
+         { login: "hoj" },
+         { login: "heavinted1990" },
+         { login: "heavinted1990" },
+         { login: "upeth34" },
+         { login: "puffal0pe" },
+      ]
+
+      const usersVisits = new Map()
+
+      for (const user of usersBeenOnSiteList) {
+         usersVisits.set(user.login, (usersVisits.get(user.login) ?? 0) + 1)
+      }
+
+      usersVisits.forEach((visits, userLogin) => {
+         document.write(`${userLogin}: ${visits}`)
+         document.write("<br>")
+      })
+   </script>
+   <a href="lesson24.html">Назад</a>
+
+</body>
+
+</html>

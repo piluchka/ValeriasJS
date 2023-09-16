@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Task 6</title>
+</head>
+
+<body>
+   <script>
+      // Задача 10 Дано два списки прізвищ студентів, що відвідують гуртки з математики і історії.
+      // Підрахувати скільки студентів з гуртка з історії також відвідують гурток з математики.
+      // Також підрахувати скільки всього студентів відвідують хоча б один гурток.
+
+      const mathStudentsList = [
+         "Smith",
+         "Johnson",
+         "Brown",
+         "Taylor",
+         "Anderson",
+         "Davis",
+         "Martinez",
+         "Wilson",
+         "Lee",
+         "Harris",
+         "Jones",
+         "Rodriguez",
+         "Jackson",
+         "White",
+         "Clark",
+         "Lewis",
+         "Turner",
+         "Young",
+      ]
+      const historyStudentsList = [
+         "Turner",
+         "Baker",
+         "Adams",
+         "Johnson",
+         "Martinez",
+         "King",
+         "Hill",
+         "Reed",
+         "Lee",
+         "Lopez",
+         "Bennett",
+         "Morgan",
+         "Cooper",
+         "Bailey",
+         "Jackson",
+      ]
+
+      const totalAmountOfStudentsInClasses =
+         mathStudentsList.length + historyStudentsList.length
+
+      const uniqueStudents = new Set(mathStudentsList.concat(historyStudentsList))
+
+      const studentsInBothClasses =
+         totalAmountOfStudentsInClasses - uniqueStudents.size
+
+      document.write(
+         `${studentsInBothClasses} students visit both classes. Students attend at least one group - ${uniqueStudents.size} `
+      )
+   </script>
+   <a href="lesson24.html">Назад</a>
+</body>
+
+</html>

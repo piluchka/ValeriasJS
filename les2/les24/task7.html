@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Task 7</title>
+   <style>
+      #container {
+         width: 100%;
+         height: 100vh;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="container"></div>
+   <script>
+      // Задача 11. Користувач може змінювати колір фону, що вибирає користувач з використанням
+      // {/* <input type="color">. */}
+      // {/* Зберігати цей колір і відновлювати при наступному відкритті. Також зберігати і відображати кількість змін протягом одного сеансу. */}
+
+      class BGChangerAndSaverWithInput {
+         constructor(labelTitle) {
+            this.labelTitle = labelTitle
+         }
+
+         createColorchangeInput() {
+            const inpLabel = document.createElement("label")
+            inpLabel.innerText = this.labelTitle
+            this.containerSelector.append(inpLabel)
+
+            this.colorInput = document.createElement("input")
+            this.colorInput.setAttribute("type", "color")
+            inpLabel.append(this.colorInput)
+         }
+
+         changeBGAndSaveToLocalStorage() {
+            const inputValue = this.colorInput.value
+            this.containerSelector.style.backgroundColor = inputValue
+
+            localStorage.setItem("bgColor", inputValue)
+         }
+
+         saveAndShowInputClicksInSessionStorage() {
+            this.inpClicks
+            if (!sessionStorage.getItem("inpClicks")) {
+               sessionStorage.setItem("inpClicks", 1)
+            } else {
+               let clicksValue = parseInt(sessionStorage.getItem("inpClicks"))
+               this.inpClicks = clicksValue + 1
+               sessionStorage.setItem("inpClicks", this.inpClicks)
+            }
+         }
+
+         render(containerSelector) {
+            this.containerSelector = document.querySelector(containerSelector)
+            this.containerSelector.style.backgroundColor =
+               localStorage.getItem("bgColor") ?? "white"
+
+            this.createColorchangeInput()
+
+            this.colorInput.addEventListener(
+               "input",
+               this.changeBGAndSaveToLocalStorage.bind(this)
+            )
+            this.colorInput.addEventListener(
+               "change",
+               this.saveAndShowInputClicksInSessionStorage.bind(this)
+            )
+            this.colorInput.value = localStorage.getItem("bgColor")
+         }
+      }
+
+
+      let a = new BGChangerAndSaverWithInput("Choose background color")
+      a.render("#container")
+
+   </script>
+   <a href="lesson24.html">Назад</a>
+
+</body>
+
+</html>

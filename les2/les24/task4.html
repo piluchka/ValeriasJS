@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Task 4</title>
+</head>
+
+<body>
+   <script>
+      // Задача 8. Дано масив студентів (піб, курс, факультет). Підрахувати кількість різних факультетів, та кількість студентів кожного з курсів.
+      const studentsList = [
+         { name: "James", courseNumber: 4, faculty: "Zoology" },
+         { name: "Robert", courseNumber: 3, faculty: "Genetics" },
+         { name: "John", courseNumber: 1, faculty: "Zoology" },
+         { name: "Richard", courseNumber: 1, faculty: "Genetics" },
+         { name: "Jennifer", courseNumber: 3, faculty: "Psychology" },
+         { name: "Richard", courseNumber: 1, faculty: "Genetics" },
+         { name: "Kimberly", courseNumber: 4, faculty: "Psychology" },
+         { name: "Donna", courseNumber: 3, faculty: "Genetics" },
+         { name: "Kimberly", courseNumber: 2, faculty: "Zoology" },
+         { name: "Jennifer", courseNumber: 1, faculty: "Biochemistry" },
+         { name: "Richard", courseNumber: 4, faculty: "Biochemistry" },
+         { name: "Donna", courseNumber: 4, faculty: "Zoology" },
+         { name: "Andrew", courseNumber: 1, faculty: "Genetics" },
+         { name: "Dorothy", courseNumber: 2, faculty: "Psychology" },
+         { name: "Jeffrey", courseNumber: 3, faculty: "Psychology" },
+         { name: "Carol", courseNumber: 4, faculty: "Zoology" },
+         { name: "John", courseNumber: 3, faculty: "Zoology" },
+         { name: "Jennifer", courseNumber: 2, faculty: "Psychology" },
+         { name: "Susan	", courseNumber: 3, faculty: "Genetics" },
+         { name: "Joshua", courseNumber: 4, faculty: "Psychology" },
+         { name: "Kimberly", courseNumber: 1, faculty: "Genetics" },
+         { name: "Joshua", courseNumber: 2, faculty: "Zoology" },
+         { name: "Thomas", courseNumber: 3, faculty: "Biochemistry" },
+         { name: "John", courseNumber: 3, faculty: "Zoology" },
+         { name: "Kimberly", courseNumber: 1, faculty: "Biochemistry" },
+         { name: "Andrew", courseNumber: 1, faculty: "Biochemistry" },
+         { name: "Susan", courseNumber: 4, faculty: "Zoology" },
+         { name: "Kimberly", courseNumber: 3, faculty: "Zoology" },
+         { name: "Susan", courseNumber: 1, faculty: "Zoology" },
+         { name: "Andrew", courseNumber: 3, faculty: "Biochemistry" },
+         { name: "John", courseNumber: 1, faculty: "Zoology" },
+      ]
+
+      const diffFaculties = new Set()
+      const studentsOfDiffCoursesAmount = new Map()
+
+      for (const student of studentsList) {
+         diffFaculties.add(student.faculty)
+         studentsOfDiffCoursesAmount.set(
+            student.courseNumber,
+            (studentsOfDiffCoursesAmount.get(student.courseNumber) ?? 0) + 1
+         )
+      }
+      let sortedStudentsOfDiffCoursesAmount = new Map(
+         Array.from(studentsOfDiffCoursesAmount).sort((a, b) => a[0] - b[0])
+      )
+
+      function render(facAmount, studOnDiffCousesAmount) {
+         const container = document.createElement("div")
+         document.body.append(container)
+
+         const facultiesAmount = document.createElement("p")
+         facultiesAmount.innerText = `${diffFaculties.size} is total amount of the faculties`
+         container.append(facultiesAmount)
+
+         studOnDiffCousesAmount.forEach((studentsAmount, course) => {
+            const p = document.createElement("p")
+            p.innerText = `There are ${studentsAmount} students on course ${course}`
+            container.append(p)
+         })
+      }
+
+
+      render(diffFaculties.size, sortedStudentsOfDiffCoursesAmount)
+
+   </script>
+   <a href="lesson24.html">Назад</a>
+</body>
+
+</html>

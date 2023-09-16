@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Task 1</title>
+</head>
+
+<body>
+   <script>
+      // Задача 5. Дано список з віком учнів. Підрахувати скільки разів кожне значення зустрічається у списку і максимальне.
+      const agesList = [12, 12, 11, 14, 13, 16, 13, 12, 16, 13, 10, 9, 15, 16, 17]
+      let agesMap = new Map()
+      let maxAge = -Infinity
+      for (let i = 0; i < agesList.length; i++) {
+         agesMap.set(agesList[i], (agesMap.get(agesList[i]) ?? 0) + 1)
+         maxAge = agesList[i] > maxAge ? agesList[i] : maxAge
+      }
+
+      function renderAges(agesMap) {
+         let container = document.createElement("div")
+         document.body.append(container)
+
+         agesMap.forEach((amount, age) => {
+            let p = document.createElement("p")
+
+            let timeStr = amount > 1 ? "times" : "time"
+
+            p.innerText = `${age} - ${amount} ${timeStr}`
+            container.append(p)
+         })
+
+         let p = document.createElement("p")
+         p.innerText = `${maxAge} - Max age`
+         container.append(p)
+      }
+      renderAges(agesMap)
+
+   </script>
+
+   <a href="lesson24.html">Назад</a>
+</body>
+
+</html>

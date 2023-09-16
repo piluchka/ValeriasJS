@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Task 8</title>
+   <style>
+      .saveLable {
+         display: flex;
+         flex-direction: column;
+         align-items: start;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="container"></div>
+   <script>
+      // Задача 12. Зберігати у пам’яті список справ, які користувачу треба виконати (зберігати у localStorage).
+      //  Періодично випадковим чином вибирати якусь з справ і виводити користувачу (з використанням confirm).
+      //  Якщо користувач натискає на «Ок», то видаляти цю задачу. !!! ОБРАБОТАТЬ НУЛЛ
+
+      class SmartTaskReminder {
+         constructor(showTaskInterval) {
+            this.showTaskInterval = showTaskInterval
+         }
+
+         randomNumber(min, max) {
+            return min + Math.floor(Math.random() * (max - min + 1))
+         }
+
+         getTasksListFromUser() {
+            let task
+            let tasksList = []
+            do {
+               task = prompt("Add a task")
+               if (task !== null) {
+                  tasksList.push(task)
+               }
+               task = confirm("Continue adding?")
+            } while (task)
+            return tasksList
+         }
+
+         saveTasksListInLocalStorage() {
+            this.tasksList = this.getTasksListFromUser()
+            localStorage.setItem("userTasks", JSON.stringify(this.tasksList))
+         }
+
+         showAndDeleteRandomTask() {
+            let storageTasksList = JSON.parse(localStorage.getItem("userTasks"))
+            let intervalID = setInterval(() => {
+               let arrRandIndex = this.randomNumber(0, storageTasksList.length - 1)
+
+               if (storageTasksList.length > 0) {
+                  let shownTask = confirm(`${storageTasksList[arrRandIndex]}`)
+                  if (shownTask) {
+                     storageTasksList.splice(arrRandIndex, 1)
+                     localStorage.setItem("userTasks", JSON.stringify(storageTasksList))
+                  }
+               } else {
+                  clearInterval(intervalID)
+                  localStorage.removeItem("userTasks")
+               }
+            }, this.showTaskInterval)
+         }
+
+         render(containerSelector) {
+            this.containerSelector = document.querySelector(containerSelector)
+            this.saveTasksListInLocalStorage()
+
+            this.showAndDeleteRandomTask()
+         }
+      }
+
+      window.onload = function () {
+         let a = new SmartTaskReminder(4000)
+         a.render("#container")
+      }
+   </script>
+   <a href="lesson24.html">Назад</a>
+</body>
+
+</html>
